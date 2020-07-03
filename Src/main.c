@@ -112,11 +112,15 @@ int main(void)
   /* USER CODE BEGIN WHILE */
 
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> 79e6461... - Chaned will create if file does not exist or will append if file exist
 
   while (1)
   {
     /* USER CODE END WHILE */
 //    MX_USB_HOST_Process();
+<<<<<<< HEAD
 =======
 MX_TIM3_Init();
 TIM_Start();
@@ -177,6 +181,9 @@ float u;
 
 >>>>>>> origin/sensors
 
+=======
+
+>>>>>>> 79e6461... - Chaned will create if file does not exist or will append if file exist
 		MX_USB_HOST_Process();
 		
 		

@@ -392,7 +392,10 @@
           </Files>
         </Group>
         <Group>
+<<<<<<< HEAD:MDK-ARM/DHT22.uvprojx
 <<<<<<< HEAD:MDK-ARM/usb_final.uvprojx
+=======
+>>>>>>> 79e6461... - Chaned will create if file does not exist or will append if file exist:MDK-ARM/usb_final.uvprojx
           <GroupName>Application/User</GroupName>
 =======
           <GroupName>Sensors</GroupName>

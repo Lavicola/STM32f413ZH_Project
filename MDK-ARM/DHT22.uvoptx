@@ -268,7 +268,10 @@
   </Group>
 
   <Group>
+<<<<<<< HEAD:MDK-ARM/DHT22.uvoptx
 <<<<<<< HEAD:MDK-ARM/usb_final.uvoptx
+=======
+>>>>>>> 79e6461... - Chaned will create if file does not exist or will append if file exist:MDK-ARM/usb_final.uvoptx
     <GroupName>Application/User</GroupName>
 =======
     <GroupName>Sensors</GroupName>
@@ -618,11 +621,15 @@
       <bShared>0</bShared>
     </File>
     <File>
+<<<<<<< HEAD:MDK-ARM/DHT22.uvoptx
 <<<<<<< HEAD:MDK-ARM/usb_final.uvoptx
       <GroupNumber>5</GroupNumber>
 =======
       <GroupNumber>4</GroupNumber>
 >>>>>>> origin/sensors:MDK-ARM/DHT22.uvoptx
+=======
+      <GroupNumber>5</GroupNumber>
+>>>>>>> 79e6461... - Chaned will create if file does not exist or will append if file exist:MDK-ARM/usb_final.uvoptx
       <FileNumber>29</FileNumber>
       <FileType>1</FileType>
       <tvExp>0</tvExp>
@@ -634,11 +641,15 @@
       <bShared>0</bShared>
     </File>
     <File>
+<<<<<<< HEAD:MDK-ARM/DHT22.uvoptx
 <<<<<<< HEAD:MDK-ARM/usb_final.uvoptx
       <GroupNumber>5</GroupNumber>
 =======
       <GroupNumber>4</GroupNumber>
 >>>>>>> origin/sensors:MDK-ARM/DHT22.uvoptx
+=======
+      <GroupNumber>5</GroupNumber>
+>>>>>>> 79e6461... - Chaned will create if file does not exist or will append if file exist:MDK-ARM/usb_final.uvoptx
       <FileNumber>30</FileNumber>
       <FileType>1</FileType>
       <tvExp>0</tvExp>
@@ -650,11 +661,15 @@
       <bShared>0</bShared>
     </File>
     <File>
+<<<<<<< HEAD:MDK-ARM/DHT22.uvoptx
 <<<<<<< HEAD:MDK-ARM/usb_final.uvoptx
       <GroupNumber>5</GroupNumber>
 =======
       <GroupNumber>4</GroupNumber>
 >>>>>>> origin/sensors:MDK-ARM/DHT22.uvoptx
+=======
+      <GroupNumber>5</GroupNumber>
+>>>>>>> 79e6461... - Chaned will create if file does not exist or will append if file exist:MDK-ARM/usb_final.uvoptx
       <FileNumber>31</FileNumber>
       <FileType>1</FileType>
       <tvExp>0</tvExp>
@@ -666,11 +681,15 @@
       <bShared>0</bShared>
     </File>
     <File>
+<<<<<<< HEAD:MDK-ARM/DHT22.uvoptx
 <<<<<<< HEAD:MDK-ARM/usb_final.uvoptx
       <GroupNumber>5</GroupNumber>
 =======
       <GroupNumber>4</GroupNumber>
 >>>>>>> origin/sensors:MDK-ARM/DHT22.uvoptx
+=======
+      <GroupNumber>5</GroupNumber>
+>>>>>>> 79e6461... - Chaned will create if file does not exist or will append if file exist:MDK-ARM/usb_final.uvoptx
       <FileNumber>32</FileNumber>
       <FileType>1</FileType>
       <tvExp>0</tvExp>
@@ -682,11 +701,15 @@
       <bShared>0</bShared>
     </File>
     <File>
+<<<<<<< HEAD:MDK-ARM/DHT22.uvoptx
 <<<<<<< HEAD:MDK-ARM/usb_final.uvoptx
       <GroupNumber>6</GroupNumber>
 =======
       <GroupNumber>4</GroupNumber>
 >>>>>>> origin/sensors:MDK-ARM/DHT22.uvoptx
+=======
+      <GroupNumber>6</GroupNumber>
+>>>>>>> 79e6461... - Chaned will create if file does not exist or will append if file exist:MDK-ARM/usb_final.uvoptx
       <FileNumber>33</FileNumber>
       <FileType>1</FileType>
       <tvExp>0</tvExp>
@@ -698,11 +721,15 @@
       <bShared>0</bShared>
     </File>
     <File>
+<<<<<<< HEAD:MDK-ARM/DHT22.uvoptx
 <<<<<<< HEAD:MDK-ARM/usb_final.uvoptx
       <GroupNumber>6</GroupNumber>
 =======
       <GroupNumber>4</GroupNumber>
 >>>>>>> origin/sensors:MDK-ARM/DHT22.uvoptx
+=======
+      <GroupNumber>6</GroupNumber>
+>>>>>>> 79e6461... - Chaned will create if file does not exist or will append if file exist:MDK-ARM/usb_final.uvoptx
       <FileNumber>34</FileNumber>
       <FileType>1</FileType>
       <tvExp>0</tvExp>
@@ -714,11 +741,15 @@
       <bShared>0</bShared>
     </File>
     <File>
+<<<<<<< HEAD:MDK-ARM/DHT22.uvoptx
 <<<<<<< HEAD:MDK-ARM/usb_final.uvoptx
       <GroupNumber>6</GroupNumber>
 =======
       <GroupNumber>4</GroupNumber>
 >>>>>>> origin/sensors:MDK-ARM/DHT22.uvoptx
+=======
+      <GroupNumber>6</GroupNumber>
+>>>>>>> 79e6461... - Chaned will create if file does not exist or will append if file exist:MDK-ARM/usb_final.uvoptx
       <FileNumber>35</FileNumber>
       <FileType>1</FileType>
       <tvExp>0</tvExp>
@@ -730,11 +761,15 @@
       <bShared>0</bShared>
     </File>
     <File>
+<<<<<<< HEAD:MDK-ARM/DHT22.uvoptx
 <<<<<<< HEAD:MDK-ARM/usb_final.uvoptx
       <GroupNumber>6</GroupNumber>
 =======
       <GroupNumber>4</GroupNumber>
 >>>>>>> origin/sensors:MDK-ARM/DHT22.uvoptx
+=======
+      <GroupNumber>6</GroupNumber>
+>>>>>>> 79e6461... - Chaned will create if file does not exist or will append if file exist:MDK-ARM/usb_final.uvoptx
       <FileNumber>36</FileNumber>
       <FileType>1</FileType>
       <tvExp>0</tvExp>
@@ -746,11 +781,15 @@
       <bShared>0</bShared>
     </File>
     <File>
+<<<<<<< HEAD:MDK-ARM/DHT22.uvoptx
 <<<<<<< HEAD:MDK-ARM/usb_final.uvoptx
       <GroupNumber>6</GroupNumber>
 =======
       <GroupNumber>4</GroupNumber>
 >>>>>>> origin/sensors:MDK-ARM/DHT22.uvoptx
+=======
+      <GroupNumber>6</GroupNumber>
+>>>>>>> 79e6461... - Chaned will create if file does not exist or will append if file exist:MDK-ARM/usb_final.uvoptx
       <FileNumber>37</FileNumber>
       <FileType>1</FileType>
       <tvExp>0</tvExp>
@@ -762,11 +801,15 @@
       <bShared>0</bShared>
     </File>
     <File>
+<<<<<<< HEAD:MDK-ARM/DHT22.uvoptx
 <<<<<<< HEAD:MDK-ARM/usb_final.uvoptx
       <GroupNumber>6</GroupNumber>
 =======
       <GroupNumber>4</GroupNumber>
 >>>>>>> origin/sensors:MDK-ARM/DHT22.uvoptx
+=======
+      <GroupNumber>6</GroupNumber>
+>>>>>>> 79e6461... - Chaned will create if file does not exist or will append if file exist:MDK-ARM/usb_final.uvoptx
       <FileNumber>38</FileNumber>
       <FileType>1</FileType>
       <tvExp>0</tvExp>
@@ -786,11 +829,15 @@
     <cbSel>0</cbSel>
     <RteFlg>0</RteFlg>
     <File>
+<<<<<<< HEAD:MDK-ARM/DHT22.uvoptx
 <<<<<<< HEAD:MDK-ARM/usb_final.uvoptx
       <GroupNumber>6</GroupNumber>
 =======
       <GroupNumber>5</GroupNumber>
 >>>>>>> origin/sensors:MDK-ARM/DHT22.uvoptx
+=======
+      <GroupNumber>6</GroupNumber>
+>>>>>>> 79e6461... - Chaned will create if file does not exist or will append if file exist:MDK-ARM/usb_final.uvoptx
       <FileNumber>39</FileNumber>
       <FileType>1</FileType>
       <tvExp>0</tvExp>
