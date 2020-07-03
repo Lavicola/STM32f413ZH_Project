@@ -43,6 +43,8 @@
 #define USBH_ADDRESS_DEFAULT                     0x00U
 #define USBH_ADDRESS_ASSIGNED                    0x01U
 #define USBH_MPS_DEFAULT                         0x40U
+
+
 /**
   * @}
   */

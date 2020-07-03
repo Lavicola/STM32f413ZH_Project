@@ -101,11 +101,14 @@ int main(void)
 
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
+
+
   while (1)
   {
     /* USER CODE END WHILE */
-    MX_USB_HOST_Process();
+//    MX_USB_HOST_Process();
 
+		MX_USB_HOST_Process();
 		
 		userFunction();
 		
