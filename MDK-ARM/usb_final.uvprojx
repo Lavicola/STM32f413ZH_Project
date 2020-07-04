@@ -703,14 +703,29 @@
               <FilePath>..\Custom\dht22.cpp</FilePath>
             </File>
             <File>
-              <FileName>GPIO_Functions.cpp</FileName>
+              <FileName>ISensor.cpp</FileName>
               <FileType>8</FileType>
-              <FilePath>..\Custom\GPIO_Functions.cpp</FilePath>
+              <FilePath>..\Custom\ISensor.cpp</FilePath>
             </File>
             <File>
-              <FileName>GPIO_Functions.h</FileName>
+              <FileName>ComponentsManager.h</FileName>
               <FileType>5</FileType>
-              <FilePath>..\Custom\GPIO_Functions.h</FilePath>
+              <FilePath>..\Custom\ComponentsManager.h</FilePath>
+            </File>
+            <File>
+              <FileName>ComponentsManager.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>..\Custom\ComponentsManager.cpp</FilePath>
+            </File>
+            <File>
+              <FileName>FloatToString.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>..\Custom\FloatToString.cpp</FilePath>
+            </File>
+            <File>
+              <FileName>FloatToString.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\Custom\FloatToString.h</FilePath>
             </File>
           </Files>
         </Group>

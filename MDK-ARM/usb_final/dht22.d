@@ -1,6 +1,7 @@
 usb_final\dht22.o: ..\Custom\dht22.cpp
 usb_final\dht22.o: ..\Custom\dht22.h
-usb_final\dht22.o: ..\Custom\GPIO_Functions.h
+usb_final\dht22.o: ..\Custom\ISensor.h
+usb_final\dht22.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
 usb_final\dht22.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h
 usb_final\dht22.o: ../Inc/stm32f4xx_hal_conf.h
 usb_final\dht22.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_rcc.h
@@ -8,7 +9,6 @@ usb_final\dht22.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_def.h
 usb_final\dht22.o: ../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f4xx.h
 usb_final\dht22.o: ../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f413xx.h
 usb_final\dht22.o: ../Drivers/CMSIS/Include/core_cm4.h
-usb_final\dht22.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
 usb_final\dht22.o: ../Drivers/CMSIS/Include/cmsis_version.h
 usb_final\dht22.o: ../Drivers/CMSIS/Include/cmsis_compiler.h
 usb_final\dht22.o: ../Drivers/CMSIS/Include/cmsis_armcc.h
@@ -34,6 +34,4 @@ usb_final\dht22.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim_ex.h
 usb_final\dht22.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_uart.h
 usb_final\dht22.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_hcd.h
 usb_final\dht22.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_ll_usb.h
-usb_final\dht22.o: ..\Custom\ISensor.h
-usb_final\dht22.o: ..\Custom\GPIO_Functions.h
 usb_final\dht22.o: ..\Custom\TIM_Delay.h

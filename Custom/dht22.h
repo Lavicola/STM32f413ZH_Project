@@ -3,7 +3,6 @@
 #define DHT22_H
 
 
-#include "GPIO_Functions.h"
 #include "ISensor.h"
 
 class DHT22 : ISensor{

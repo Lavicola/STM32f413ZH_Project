@@ -26,7 +26,7 @@
 /* Includes ------------------------------------------------------------------*/
 #include "main.h"
 #include "TIM_Delay.h"
-#include "dht22.h"
+#include "ComponentsManager.h"
 extern "C" {
 #include "fatfs.h"
 #include "usb_host.h"
@@ -113,8 +113,9 @@ TIM_Start();
 float tmp;
 float rh;
 
-	DHT22 dht = DHT22(DHT22_PIN,DHT22_PORT);
-		dht.GetMeasurement(&tmp,&rh);
+
+
+ComponentsManager l_manager = ComponentsManager();
 
 
   /* Infinite loop */
@@ -122,13 +123,14 @@ float rh;
   while (1)
   {
 		
+		l_manager.getDHT22Measure(&tmp,&rh);
 		
     /* USER CODE END WHILE */
-    MX_USB_HOST_Process();
+//    MX_USB_HOST_Process();
 
-		userFunction();
+	//	userFunction();
 		
-		
+		HAL_Delay(4000);
 		
     /* USER CODE BEGIN 3 */
   }

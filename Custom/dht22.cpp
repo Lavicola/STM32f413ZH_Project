@@ -1,6 +1,5 @@
 
 #include "dht22.h"
-#include "GPIO_Functions.h"
 #include "TIM_Delay.h"
 
 DHT22::DHT22(uint16_t a_pin,GPIO_TypeDef* a_port){
@@ -11,14 +10,14 @@ DHT22::DHT22(uint16_t a_pin,GPIO_TypeDef* a_port){
 
 void DHT22::Start(void)
 {
-	gpio::Set_Pin_Output(m_GPIO_PORT, m_GPIO_PIN); // set the pin as output
+	ISensor::Set_Pin_Output(m_GPIO_PORT, m_GPIO_PIN); // set the pin as output
 	HAL_GPIO_WritePin (m_GPIO_PORT, m_GPIO_PIN, GPIO_PIN_RESET);   // pull the pin low
 	delay(500);   // wait for > 1ms
 
 	HAL_GPIO_WritePin (m_GPIO_PORT, m_GPIO_PIN, GPIO_PIN_SET);   // pull the pin high
 	delay (30);   // wait for 30us
 
-	gpio::Set_Pin_Input(m_GPIO_PORT, m_GPIO_PIN);   // set as input
+	ISensor::Set_Pin_Input(m_GPIO_PORT, m_GPIO_PIN);   // set as input
 }
 
 

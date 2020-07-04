@@ -152,34 +152,34 @@
         <Bp>
           <Number>0</Number>
           <Type>0</Type>
-          <LineNumber>105</LineNumber>
+          <LineNumber>103</LineNumber>
           <EnabledFlag>1</EnabledFlag>
-          <Address>134243010</Address>
+          <Address>134237326</Address>
           <ByteObject>0</ByteObject>
           <HtxType>0</HtxType>
           <ManyObjects>0</ManyObjects>
           <SizeOfObject>0</SizeOfObject>
           <BreakByAccess>0</BreakByAccess>
           <BreakIfRCount>1</BreakIfRCount>
-          <Filename>../Src/usb_host.c</Filename>
+          <Filename>..\Custom\dht22.cpp</Filename>
           <ExecCommand></ExecCommand>
-          <Expression>\\usb_final\../Src/usb_host.c\105</Expression>
+          <Expression>\\usb_final\../Custom/dht22.cpp\103</Expression>
         </Bp>
         <Bp>
           <Number>1</Number>
           <Type>0</Type>
-          <LineNumber>107</LineNumber>
+          <LineNumber>101</LineNumber>
           <EnabledFlag>1</EnabledFlag>
-          <Address>0</Address>
+          <Address>134237312</Address>
           <ByteObject>0</ByteObject>
           <HtxType>0</HtxType>
           <ManyObjects>0</ManyObjects>
           <SizeOfObject>0</SizeOfObject>
           <BreakByAccess>0</BreakByAccess>
-          <BreakIfRCount>0</BreakIfRCount>
-          <Filename>../Src/usb_host.c</Filename>
+          <BreakIfRCount>1</BreakIfRCount>
+          <Filename>..\Custom\dht22.cpp</Filename>
           <ExecCommand></ExecCommand>
-          <Expression></Expression>
+          <Expression>\\usb_final\../Custom/dht22.cpp\101</Expression>
         </Bp>
       </Breakpoint>
       <Tracepoint>
@@ -823,8 +823,8 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>..\Custom\GPIO_Functions.cpp</PathWithFileName>
-      <FilenameWithoutPath>GPIO_Functions.cpp</FilenameWithoutPath>
+      <PathWithFileName>..\Custom\ISensor.cpp</PathWithFileName>
+      <FilenameWithoutPath>ISensor.cpp</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
     </File>
@@ -835,8 +835,44 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>..\Custom\GPIO_Functions.h</PathWithFileName>
-      <FilenameWithoutPath>GPIO_Functions.h</FilenameWithoutPath>
+      <PathWithFileName>..\Custom\ComponentsManager.h</PathWithFileName>
+      <FilenameWithoutPath>ComponentsManager.h</FilenameWithoutPath>
+      <RteFlg>0</RteFlg>
+      <bShared>0</bShared>
+    </File>
+    <File>
+      <GroupNumber>7</GroupNumber>
+      <FileNumber>47</FileNumber>
+      <FileType>8</FileType>
+      <tvExp>0</tvExp>
+      <tvExpOptDlg>0</tvExpOptDlg>
+      <bDave2>0</bDave2>
+      <PathWithFileName>..\Custom\ComponentsManager.cpp</PathWithFileName>
+      <FilenameWithoutPath>ComponentsManager.cpp</FilenameWithoutPath>
+      <RteFlg>0</RteFlg>
+      <bShared>0</bShared>
+    </File>
+    <File>
+      <GroupNumber>7</GroupNumber>
+      <FileNumber>48</FileNumber>
+      <FileType>8</FileType>
+      <tvExp>0</tvExp>
+      <tvExpOptDlg>0</tvExpOptDlg>
+      <bDave2>0</bDave2>
+      <PathWithFileName>..\Custom\FloatToString.cpp</PathWithFileName>
+      <FilenameWithoutPath>FloatToString.cpp</FilenameWithoutPath>
+      <RteFlg>0</RteFlg>
+      <bShared>0</bShared>
+    </File>
+    <File>
+      <GroupNumber>7</GroupNumber>
+      <FileNumber>49</FileNumber>
+      <FileType>5</FileType>
+      <tvExp>0</tvExp>
+      <tvExpOptDlg>0</tvExpOptDlg>
+      <bDave2>0</bDave2>
+      <PathWithFileName>..\Custom\FloatToString.h</PathWithFileName>
+      <FilenameWithoutPath>FloatToString.h</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
     </File>
