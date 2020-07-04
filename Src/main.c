@@ -19,9 +19,14 @@
 /* USER CODE END Header */
 
 /* Includes ------------------------------------------------------------------*/
+
+extern "C"
+{
+	#include "usb_host.h"
+	#include "fatfs.h"
+}
+#include "TIM_Delay.h"
 #include "main.h"
-#include "fatfs.h"
-#include "usb_host.h"
 
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
@@ -77,6 +82,9 @@ void MX_USB_HOST_Process(void);
   * @brief  The application entry point.
   * @retval int
   */
+	
+
+		
 int main(void)
 {
   /* USER CODE BEGIN 1 */
@@ -104,22 +112,24 @@ int main(void)
   MX_USART3_UART_Init();
   MX_FATFS_Init();
   MX_USB_HOST_Init();
-  MX_TIM3_Init();
+	TIM_Delay_Init();
   MX_I2C1_Init();
   MX_RTC_Init();
   /* USER CODE BEGIN 2 */
 
   /* USER CODE END 2 */
-
-  /* Infinite loop */
+	TIM_DELAY_BASE_START();
+/* Infinite loop */
   /* USER CODE BEGIN WHILE */
   while (1)
   {
     /* USER CODE END WHILE */
     MX_USB_HOST_Process();
 
-		
 		save_to_usb();
+		
+		delay(10000);
+
 		
     /* USER CODE BEGIN 3 */
   }

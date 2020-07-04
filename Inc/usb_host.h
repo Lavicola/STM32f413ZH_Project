@@ -73,6 +73,10 @@ void MX_USB_HOST_Init(void);
 
 void MX_USB_HOST_Process(void);
 
+//custom function
+void save_to_usb(void);
+
+
 /**
   * @}
   */

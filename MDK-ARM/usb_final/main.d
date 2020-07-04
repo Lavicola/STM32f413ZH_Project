@@ -1,9 +1,5 @@
 usb_final\main.o: ../Src/main.c
-usb_final\main.o: ../Inc/main.h
-usb_final\main.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h
-usb_final\main.o: ../Inc/stm32f4xx_hal_conf.h
-usb_final\main.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_rcc.h
-usb_final\main.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_def.h
+usb_final\main.o: ../Inc/usb_host.h
 usb_final\main.o: ../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f4xx.h
 usb_final\main.o: ../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f413xx.h
 usb_final\main.o: ../Drivers/CMSIS/Include/core_cm4.h
@@ -14,6 +10,10 @@ usb_final\main.o: ../Drivers/CMSIS/Include/cmsis_armcc.h
 usb_final\main.o: ../Drivers/CMSIS/Include/mpu_armv7.h
 usb_final\main.o: ../Drivers/CMSIS/Device/ST/STM32F4xx/Include/system_stm32f4xx.h
 usb_final\main.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h
+usb_final\main.o: ../Inc/stm32f4xx_hal_conf.h
+usb_final\main.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_rcc.h
+usb_final\main.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_def.h
+usb_final\main.o: ../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f4xx.h
 usb_final\main.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy/stm32_hal_legacy.h
 usb_final\main.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stddef.h
 usb_final\main.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_rcc_ex.h
@@ -41,6 +41,7 @@ usb_final\main.o: ../Inc/fatfs.h
 usb_final\main.o: ../Middlewares/Third_Party/FatFs/src/ff.h
 usb_final\main.o: ../Middlewares/Third_Party/FatFs/src/integer.h
 usb_final\main.o: ../Inc/ffconf.h
+usb_final\main.o: ../Inc/main.h
 usb_final\main.o: ../Middlewares/ST/STM32_USB_Host_Library/Core/Inc/usbh_core.h
 usb_final\main.o: ../Inc/usbh_conf.h
 usb_final\main.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdio.h
@@ -57,4 +58,4 @@ usb_final\main.o: ../Middlewares/ST/STM32_USB_Host_Library/Class/MSC/Inc/usbh_ms
 usb_final\main.o: ../Middlewares/Third_Party/FatFs/src/ff_gen_drv.h
 usb_final\main.o: ../Middlewares/Third_Party/FatFs/src/diskio.h
 usb_final\main.o: ../Inc/usbh_diskio.h
-usb_final\main.o: ../Inc/usb_host.h
+usb_final\main.o: ../Inc/TIM_Delay.h

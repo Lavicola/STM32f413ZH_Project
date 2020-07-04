@@ -8,6 +8,7 @@
 "usb_final\usbh_platform.o"
 "usb_final\stm32f4xx_it.o"
 "usb_final\stm32f4xx_hal_msp.o"
+"usb_final\tim_delay.o"
 "usb_final\stm32f4xx_hal_hcd.o"
 "usb_final\stm32f4xx_ll_usb.o"
 "usb_final\stm32f4xx_hal_rcc.o"
@@ -42,6 +43,8 @@
 "usb_final\usbh_msc.o"
 "usb_final\usbh_msc_bot.o"
 "usb_final\usbh_msc_scsi.o"
+"usb_final\dht22.o"
+"usb_final\sensor.o"
 --library_type=microlib --strict --scatter "usb_final\usb_final.sct"
 --summary_stderr --info summarysizes --map --load_addr_map_info --xref --callgraph --symbols
 --info sizes --info totals --info unused --info veneers
