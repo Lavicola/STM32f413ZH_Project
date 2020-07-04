@@ -13,7 +13,7 @@
   * This software component is licensed by ST under Ultimate Liberty license
   * SLA0044, the "License"; You may not use this file except in compliance with
   * the License. You may obtain a copy of the License at:
-  *   s                          www.st.com/SLA0044
+  *                             www.st.com/SLA0044
   *
   ******************************************************************************
   */
@@ -29,15 +29,30 @@
 
 /* USER CODE END Includes */
 
+/* USER CODE BEGIN PV */
+/* Private variables ---------------------------------------------------------*/
+
+/* USER CODE END PV */
+
+/* USER CODE BEGIN PFP */
+/* Private function prototypes -----------------------------------------------*/
+
+/* USER CODE END PFP */
+
+/* USB Host core handle declaration */
+USBH_HandleTypeDef hUsbHostFS;
+ApplicationTypeDef Appli_state = APPLICATION_IDLE;
+
 /*
  * -- Insert your variables declaration here --
  */
 /* USER CODE BEGIN 0 */
 
 
-USBH_HandleTypeDef hUsbHostFS;
-ApplicationTypeDef Appli_state = APPLICATION_IDLE;
-
+/*
+ * -- Insert your variables declaration here --
+ */
+/* USER CODE BEGIN 0 */
 
 #include "ff.h"
 FATFS USBH_fatfs;
@@ -46,22 +61,17 @@ FRESULT res;
 uint32_t bytesWritten;
 uint8_t rtext[200];
 uint8_t wtext[] = "USB Host Library : Mass Storage Example";
-uint8_t name[30]="awesome.txt";//name of the file
+uint8_t name[30]="blm.txt";//name of the file
 uint16_t counter=0;
 uint32_t i=0;
 uint8_t isMounted = 0;
 FILINFO fno;
 
-
-	
-static int32_t uart_length=0;
-extern char USBHPath [];  /* USBH logical drive path */
-
 extern UART_HandleTypeDef huart3;
 uint8_t uart_tx_buffer[100];
 
 
-void userFunction(void) {
+void save_to_usb(void) {
 	UINT bytesread;
 	FRESULT l_result = FR_DISK_ERR;
 	
@@ -83,7 +93,7 @@ void userFunction(void) {
 			case FR_OK:
 				l_result = f_open(&MyFile,name,FA_OPEN_APPEND|FA_WRITE);
 			break;
-			// I donÂ´t expect other errors
+			// I don´t expect other errors
 			default:
 				l_result = FR_DISK_ERR;
 		}
@@ -101,10 +111,8 @@ void userFunction(void) {
   }
 }
 
-/*
- * -- Insert your variables declaration here --
- */
-/* USER CODE BEGIN 0 */
+
+
 
 /* USER CODE END 0 */
 
