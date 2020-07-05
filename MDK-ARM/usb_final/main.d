@@ -37,6 +37,7 @@ usb_final\main.o: ..\Custom\TIM_Delay.h
 usb_final\main.o: ..\Custom\ComponentsManager.h
 usb_final\main.o: ..\Custom\dht22.h
 usb_final\main.o: ..\Custom\ISensor.h
+usb_final\main.o: ..\Custom\FloatToString.h
 usb_final\main.o: ../Inc/fatfs.h
 usb_final\main.o: ../Middlewares/Third_Party/FatFs/src/ff.h
 usb_final\main.o: ../Middlewares/Third_Party/FatFs/src/integer.h

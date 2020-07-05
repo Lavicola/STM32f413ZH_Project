@@ -60,7 +60,11 @@ uint8_t wtext[] = "USB Host Library : Mass Storage Example";
 uint8_t name[30]="OKAY.txt";//name of the file
 uint16_t counter=0;
 uint32_t i=0;
-uint8_t isMounted = 0;
+const int true =1;
+const int false =0;
+const char path[] = "0://";
+uint8_t isMounted = false;
+uint8_t isChanged = false;
 FILINFO fno;
 
 
@@ -72,17 +76,22 @@ extern UART_HandleTypeDef huart3;
 uint8_t uart_tx_buffer[100];
 
 
-void userFunction(void) {
+
+void save_to_usb(char* tmp_in_string,char* rh_in_string) {
+	char wbytes[40];
+	
+	
 	UINT bytesread;
 	FRESULT l_result = FR_DISK_ERR;
 	
 	
 	if (Appli_state == APPLICATION_READY) {		
 		// mount it first!
-		if(isMounted == 0)
+		if(isMounted == false)
 		{
-		uint8_t a = f_mount(&USBH_fatfs,"0://",1);
-			isMounted = 1;
+		uint8_t a = f_mount(&USBH_fatfs,path,1);
+			isMounted = true;
+			isChanged = true;
 		}
 		
 		
@@ -100,17 +109,31 @@ void userFunction(void) {
 		}
 		
 			if(l_result == FR_OK){
+
+				
+
+				
+				memcpy(&wbytes[0],tmp_in_string,9);
+				strcat(wbytes,"  ");
+				strcat(wbytes,rh_in_string);
+				strcat(wbytes,"\n");
 				
 				
-				HAL_UART_Transmit(&huart3, "This is a test", strlen("This is a test"),1000);
-				f_puts("This is a test\n",&MyFile);	
+				HAL_UART_Transmit(&huart3, &wbytes[0], 40,1000);
+				f_puts(wbytes,&MyFile);	
 				f_close(&MyFile);
 				
 			}
-		
 
 
-  }
+  }else if(isMounted == true && isChanged == true){
+					// if it was mounted and we changed the value we will dismount it
+					uint8_t a = f_mount(&USBH_fatfs,path,0);
+					isMounted = false;
+	}
+	
+	
+	
 }
 
 /*

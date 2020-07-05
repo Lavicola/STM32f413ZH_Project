@@ -73,7 +73,7 @@ void MX_USB_HOST_Init(void);
 
 void MX_USB_HOST_Process(void);
 
-void userFunction(void);
+void save_to_usb(char* rmp_in_string ,char* rh_in_string);
 
 /**
   * @}

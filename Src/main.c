@@ -27,6 +27,8 @@
 #include "main.h"
 #include "TIM_Delay.h"
 #include "ComponentsManager.h"
+#include "FloatToString.h"
+
 extern "C" {
 #include "fatfs.h"
 #include "usb_host.h"
@@ -113,24 +115,49 @@ TIM_Start();
 float tmp;
 float rh;
 
+char temp_in_string[20];
+char rh_in_string[20];
+
+temp_in_string[0] = 'T';
+temp_in_string[1] = 'E';
+temp_in_string[2] = 'M';
+temp_in_string[3] = 'P';
+temp_in_string[4] = ':';
+temp_in_string[5] = ' ';
+
+
+
+rh_in_string[0] = 'R';
+rh_in_string[1] = 'H';
+rh_in_string[2] = ':';
+rh_in_string[3] = ' ';
+
+
 
 
 ComponentsManager l_manager = ComponentsManager();
 
+		l_manager.getDHT22Measure(&tmp,&rh);
+		
+		
+		FloatToString(&temp_in_string[5],tmp);
+		FloatToString(&rh_in_string[3],rh);
+		
 
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
   while (1)
   {
 		
-		l_manager.getDHT22Measure(&tmp,&rh);
 		
     /* USER CODE END WHILE */
-//    MX_USB_HOST_Process();
+    MX_USB_HOST_Process();
 
-	//	userFunction();
-		
-		HAL_Delay(4000);
+		save_to_usb(temp_in_string,rh_in_string);
+			
+		delay(100);
+			
+			
 		
     /* USER CODE BEGIN 3 */
   }
