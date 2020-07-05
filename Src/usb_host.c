@@ -25,7 +25,6 @@
 #include "usbh_core.h"
 #include "usbh_msc.h"
 
-
 /* USER CODE BEGIN Includes */
 
 /* USER CODE END Includes */
@@ -57,7 +56,7 @@ FRESULT res;
 uint32_t bytesWritten;
 uint8_t rtext[200];
 uint8_t wtext[] = "USB Host Library : Mass Storage Example";
-uint8_t name[30]="OKAY.txt";//name of the file
+uint8_t name[30]="NICE.txt";//name of the file
 uint16_t counter=0;
 uint32_t i=0;
 const int true =1;
