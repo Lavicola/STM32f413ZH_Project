@@ -115,24 +115,8 @@ TIM_Start();
 float tmp;
 float rh;
 
-char temp_in_string[20];
-char rh_in_string[20];
-
-temp_in_string[0] = 'T';
-temp_in_string[1] = 'E';
-temp_in_string[2] = 'M';
-temp_in_string[3] = 'P';
-temp_in_string[4] = ':';
-temp_in_string[5] = ' ';
-
-
-
-rh_in_string[0] = 'R';
-rh_in_string[1] = 'H';
-rh_in_string[2] = ':';
-rh_in_string[3] = ' ';
-
-
+char temp_in_string[12] = "Temp: ";
+char rh_in_string[10] = "RH: " ;
 
 
 ComponentsManager l_manager = ComponentsManager();
@@ -140,8 +124,8 @@ ComponentsManager l_manager = ComponentsManager();
 		l_manager.getDHT22Measure(&tmp,&rh);
 		
 		
-		FloatToString(&temp_in_string[5],tmp);
-		FloatToString(&rh_in_string[3],rh);
+		FloatToString(&temp_in_string[6],tmp);
+		FloatToString(&rh_in_string[4],rh);
 		
 
   /* Infinite loop */

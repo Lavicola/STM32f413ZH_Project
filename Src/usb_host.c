@@ -113,7 +113,7 @@ void save_to_usb(char* tmp_in_string,char* rh_in_string) {
 				
 
 				
-				memcpy(&wbytes[0],tmp_in_string,9);
+				memcpy(&wbytes[0],tmp_in_string,10);
 				strcat(wbytes,"  ");
 				strcat(wbytes,rh_in_string);
 				strcat(wbytes,"\n");
