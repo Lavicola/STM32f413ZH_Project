@@ -25,10 +25,10 @@ extern "C"{
 #include "usb_host.h"
 }
 #include "FloatToString.h"
-#include "ComponentsManager.h"
 #include "TIM_Delay.h"
 #include "I2c_lcd.h"
 
+#include "ComponentsManager.h"
 
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
@@ -54,10 +54,13 @@ I2C_HandleTypeDef hi2c1;
 
 RTC_HandleTypeDef hrtc;
 
-
 UART_HandleTypeDef huart3;
 
+
+
+
 /* USER CODE BEGIN PV */
+
 
 /* USER CODE END PV */
 
@@ -113,48 +116,26 @@ int main(void)
   MX_I2C1_Init();
   MX_RTC_Init();
   /* USER CODE BEGIN 2 */
-TIM_Start();
+	TIM_Start();
   /* USER CODE END 2 */
 
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
-	
-float tmp;
-float rh;
-
-char temp_in_string[12] = "Temp: ";
-char rh_in_string[10] = "RH: " ;
-
-
-ComponentsManager l_manager = ComponentsManager();
-
-l_manager.getDHT22Measure(&tmp,&rh);
 
 
 
-
-FloatToString(&temp_in_string[6],tmp);
-FloatToString(&rh_in_string[4],rh);
-
-		lcd_init();
-		lcd_clear();
-		lcd_send_cmd(0x80|0x80);
-		lcd_send_string(temp_in_string);
-		lcd_send_cmd(0xc0|0xc0);
-		lcd_send_string(rh_in_string);
-
+	lcd_init();
+	lcd_clear();
 
 
   while (1)
   {
 		
-
+  
+      /* USER CODE END WHILE */
+    
 		
-		
-    /* USER CODE END WHILE */
-    MX_USB_HOST_Process();
-		save_to_usb(temp_in_string,rh_in_string);
-		delay(100);
+		//delay(100);
 		
     /* USER CODE BEGIN 3 */
   }
@@ -286,9 +267,9 @@ static void MX_RTC_Init(void)
 
   /** Initialize RTC and set the Time and Date 
   */
-  sTime.Hours = 0x22;
-  sTime.Minutes = 0x0;
-  sTime.Seconds = 0x0;
+  sTime.Hours = 0x02;
+  sTime.Minutes = 0x20;
+  sTime.Seconds = 0x00;
   sTime.DayLightSaving = RTC_DAYLIGHTSAVING_ADD1H;
   sTime.StoreOperation = RTC_STOREOPERATION_RESET;
   if (HAL_RTC_SetTime(&hrtc, &sTime, RTC_FORMAT_BCD) != HAL_OK)
@@ -306,14 +287,14 @@ static void MX_RTC_Init(void)
   }
   /** Enable the Alarm A 
   */
-  sAlarm.AlarmTime.Hours = 0x10;
-  sAlarm.AlarmTime.Minutes = 0x10;
-  sAlarm.AlarmTime.Seconds = 0x0;
+  sAlarm.AlarmTime.Hours = 0x02;
+  sAlarm.AlarmTime.Minutes = 0x20;
+  sAlarm.AlarmTime.Seconds = 0x40;
   sAlarm.AlarmTime.SubSeconds = 0x0;
   sAlarm.AlarmTime.DayLightSaving = RTC_DAYLIGHTSAVING_ADD1H;
   sAlarm.AlarmTime.StoreOperation = RTC_STOREOPERATION_RESET;
-  sAlarm.AlarmMask = RTC_ALARMMASK_HOURS|RTC_ALARMMASK_MINUTES;
-  sAlarm.AlarmSubSecondMask = RTC_ALARMSUBSECONDMASK_ALL;
+  sAlarm.AlarmMask = RTC_ALARMMASK_DATEWEEKDAY;
+  sAlarm.AlarmSubSecondMask = RTC_ALARMSUBSECONDMASK_NONE;
   sAlarm.AlarmDateWeekDaySel = RTC_ALARMDATEWEEKDAYSEL_DATE;
   sAlarm.AlarmDateWeekDay = 1;
   sAlarm.Alarm = RTC_ALARM_A;
@@ -423,6 +404,51 @@ static void MX_GPIO_Init(void)
 }
 
 /* USER CODE BEGIN 4 */
+
+void HAL_RTC_AlarmAEventCallback(RTC_HandleTypeDef *hrtc){
+
+//ComponentsManager l_manager = ComponentsManager();
+	
+	
+float tmp;
+float rh;
+
+char temp_in_string[12] = "Temp: ";
+char rh_in_string[10] = "RH: " ;
+	
+	//l_manager.getDHT22Measure(&tmp,&rh);
+	
+	FloatToString(&temp_in_string[4],tmp);
+	FloatToString(&rh_in_string[2],rh);
+	
+	
+	MX_USB_HOST_Process();
+	save_to_usb(temp_in_string,rh_in_string);
+	
+		lcd_clear();
+		lcd_send_cmd(0x80|0x80);
+		lcd_send_string(temp_in_string);
+		lcd_send_cmd(0xc0|0xc0);
+		lcd_send_string(rh_in_string);
+	
+
+
+/*
+
+FloatToString(&temp_in_string[6],tmp);
+FloatToString(&rh_in_string[4],rh);
+
+		lcd_init();
+		lcd_clear();
+		lcd_send_cmd(0x80|0x80);
+		lcd_send_string(temp_in_string);
+		lcd_send_cmd(0xc0|0xc0);
+		lcd_send_string(rh_in_string);	
+*/
+	
+	return;
+	
+}
 
 /* USER CODE END 4 */
 
