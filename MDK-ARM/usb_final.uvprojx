@@ -728,16 +728,6 @@
               <FilePath>..\Custom\ISensor.cpp</FilePath>
             </File>
             <File>
-              <FileName>ComponentsManager.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>..\Custom\ComponentsManager.h</FilePath>
-            </File>
-            <File>
-              <FileName>ComponentsManager.cpp</FileName>
-              <FileType>8</FileType>
-              <FilePath>..\Custom\ComponentsManager.cpp</FilePath>
-            </File>
-            <File>
               <FileName>FloatToString.cpp</FileName>
               <FileType>8</FileType>
               <FilePath>..\Custom\FloatToString.cpp</FilePath>
@@ -756,6 +746,11 @@
               <FileName>I2c_lcd.cpp</FileName>
               <FileType>8</FileType>
               <FilePath>..\Custom\I2c_lcd.cpp</FilePath>
+            </File>
+            <File>
+              <FileName>MeasureInformationObject.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\Custom\MeasureInformationObject.h</FilePath>
             </File>
           </Files>
         </Group>

@@ -49,3 +49,4 @@ usb_final\usbh_conf.o: ../Middlewares/ST/STM32_USB_Host_Library/Core/Inc/usbh_pi
 usb_final\usbh_conf.o: ../Middlewares/ST/STM32_USB_Host_Library/Core/Inc/usbh_ctlreq.h
 usb_final\usbh_conf.o: ../Inc/usbh_platform.h
 usb_final\usbh_conf.o: ../Inc/usb_host.h
+usb_final\usbh_conf.o: ..\Custom\MeasureInformationObject.h

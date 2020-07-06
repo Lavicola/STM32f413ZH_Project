@@ -38,3 +38,4 @@ usb_final\usbh_platform.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim
 usb_final\usbh_platform.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_uart.h
 usb_final\usbh_platform.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_hcd.h
 usb_final\usbh_platform.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_ll_usb.h
+usb_final\usbh_platform.o: ..\Custom\MeasureInformationObject.h

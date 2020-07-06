@@ -24,7 +24,6 @@ www.TechToys.com.hk
 */
 
 #include "FloatToString.h"
-#include <string.h>
 
 void FloatToString( char *buf, float f) {
 	unsigned int rem;

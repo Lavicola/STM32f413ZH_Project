@@ -27,8 +27,7 @@ extern "C"{
 #include "FloatToString.h"
 #include "TIM_Delay.h"
 #include "I2c_lcd.h"
-
-#include "ComponentsManager.h"
+#include "dht22.h"
 
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
@@ -72,7 +71,13 @@ static void MX_I2C1_Init(void);
 static void MX_RTC_Init(void);
 void MX_USB_HOST_Process(void);
 
+
 /* USER CODE BEGIN PFP */
+
+// call the hal get time/date and convert it to a string
+static void GetRTCDate(uint8_t *date);
+static void GetRTCTime(uint8_t *time);
+
 
 /* USER CODE END PFP */
 
@@ -124,6 +129,8 @@ int main(void)
 
 
 
+
+
 	lcd_init();
 	lcd_clear();
 
@@ -133,8 +140,7 @@ int main(void)
 		
   
       /* USER CODE END WHILE */
-    
-		
+
 		//delay(100);
 		
     /* USER CODE BEGIN 3 */
@@ -278,7 +284,7 @@ static void MX_RTC_Init(void)
   }
   sDate.WeekDay = RTC_WEEKDAY_SUNDAY;
   sDate.Month = RTC_MONTH_JULY;
-  sDate.Date = 0x5;
+  sDate.Date = 0x6;
   sDate.Year = 0x20;
 
   if (HAL_RTC_SetDate(&hrtc, &sDate, RTC_FORMAT_BCD) != HAL_OK)
@@ -287,13 +293,13 @@ static void MX_RTC_Init(void)
   }
   /** Enable the Alarm A 
   */
-  sAlarm.AlarmTime.Hours = 0x02;
-  sAlarm.AlarmTime.Minutes = 0x20;
-  sAlarm.AlarmTime.Seconds = 0x40;
-  sAlarm.AlarmTime.SubSeconds = 0x0;
+  sAlarm.AlarmTime.Hours = 0x00;
+  sAlarm.AlarmTime.Minutes = 0x00;
+  sAlarm.AlarmTime.Seconds = 0x00;
+  sAlarm.AlarmTime.SubSeconds = 0x00;
   sAlarm.AlarmTime.DayLightSaving = RTC_DAYLIGHTSAVING_ADD1H;
   sAlarm.AlarmTime.StoreOperation = RTC_STOREOPERATION_RESET;
-  sAlarm.AlarmMask = RTC_ALARMMASK_DATEWEEKDAY;
+  sAlarm.AlarmMask = RTC_ALARMMASK_DATEWEEKDAY|RTC_ALARMMASK_HOURS|RTC_ALARMMASK_MINUTES;
   sAlarm.AlarmSubSecondMask = RTC_ALARMSUBSECONDMASK_NONE;
   sAlarm.AlarmDateWeekDaySel = RTC_ALARMDATEWEEKDAYSEL_DATE;
   sAlarm.AlarmDateWeekDay = 1;
@@ -407,48 +413,69 @@ static void MX_GPIO_Init(void)
 
 void HAL_RTC_AlarmAEventCallback(RTC_HandleTypeDef *hrtc){
 
-//ComponentsManager l_manager = ComponentsManager();
-	
-	
-float tmp;
-float rh;
 
-char temp_in_string[12] = "Temp: ";
-char rh_in_string[10] = "RH: " ;
+dht22MeasureObject l_Measurement;
+MeasureInformation l_MeasureObject;
+		
+	GetMeasurement(l_Measurement);
+	memcpy(&l_MeasureObject.temp_in_string[0],"Temp: ",6);
+	memcpy(&l_MeasureObject.rh_in_string[0],"RH: ",4);
+
+	FloatToString(&l_MeasureObject.temp_in_string[6],l_Measurement.tmp);
+	FloatToString(&l_MeasureObject.rh_in_string[4],l_Measurement.rh);
 	
-	//l_manager.getDHT22Measure(&tmp,&rh);
-	
-	FloatToString(&temp_in_string[4],tmp);
-	FloatToString(&rh_in_string[2],rh);
+	GetRTCDate(l_MeasureObject.date);
+	GetRTCTime(l_MeasureObject.time);
 	
 	
 	MX_USB_HOST_Process();
-	save_to_usb(temp_in_string,rh_in_string);
 	
+	// The usb will never be ready the first time. Repeat until we did write it to the usb stick
+	while(!save_to_usb(l_MeasureObject)){
+	MX_USB_HOST_Process();	
+	}
+		
 		lcd_clear();
 		lcd_send_cmd(0x80|0x80);
-		lcd_send_string(temp_in_string);
+		lcd_send_string(l_MeasureObject.temp_in_string);
 		lcd_send_cmd(0xc0|0xc0);
-		lcd_send_string(rh_in_string);
+		lcd_send_string(l_MeasureObject.rh_in_string);
 	
+	
+	
+		return;
+	
+}
 
 
-/*
+static void GetRTCDate(uint8_t *date){
 
-FloatToString(&temp_in_string[6],tmp);
-FloatToString(&rh_in_string[4],rh);
+RTC_DateTypeDef currentDate;
+HAL_RTC_GetDate(&hrtc, &currentDate, FORMAT_BIN);
 
-		lcd_init();
-		lcd_clear();
-		lcd_send_cmd(0x80|0x80);
-		lcd_send_string(temp_in_string);
-		lcd_send_cmd(0xc0|0xc0);
-		lcd_send_string(rh_in_string);	
-*/
+	date[0]=currentDate.Date;
+	date[1]=currentDate.Month;
+	date[2]=currentDate.Year;
 	
 	return;
 	
 }
+
+static void GetRTCTime(uint8_t *time){
+	
+RTC_TimeTypeDef currentTime;
+HAL_RTC_GetTime(&hrtc, &currentTime, FORMAT_BIN);
+
+	time[0]=currentTime.Hours;
+	time[1]=currentTime.Minutes;
+	
+	
+	
+	
+}
+
+
+
 
 /* USER CODE END 4 */
 

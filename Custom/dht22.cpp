@@ -2,13 +2,9 @@
 #include "dht22.h"
 #include "TIM_Delay.h"
 
-DHT22::DHT22(uint16_t a_pin,GPIO_TypeDef* a_port){
-	m_GPIO_PIN = a_pin;
-	m_GPIO_PORT = a_port;			
-}
 
 
-void DHT22::Start(void)
+void Start(void)
 {
 	ISensor::Set_Pin_Output(m_GPIO_PORT, m_GPIO_PIN); // set the pin as output
 	HAL_GPIO_WritePin (m_GPIO_PORT, m_GPIO_PIN, GPIO_PIN_RESET);   // pull the pin low
@@ -22,7 +18,7 @@ void DHT22::Start(void)
 
 
 
-uint8_t DHT22::Check_Response(void)
+uint8_t Check_Response(void)
 {
 	uint8_t Response = 0;
 	delay (40);  // wait for 40us
@@ -40,7 +36,7 @@ uint8_t DHT22::Check_Response(void)
 	return Response;
 }
 
-uint8_t DHT22::Read(void)
+uint8_t Read(void)
 {
 	uint8_t i,j;
 	for (j=0;j<8;j++)
@@ -60,7 +56,7 @@ uint8_t DHT22::Read(void)
 }
 
 
-bool DHT22::parse(uint8_t a_data[5], float* a_ptemperature, float* a_phumidity) {
+bool parse(uint8_t a_data[5], float* a_ptemperature, float* a_phumidity) {
 		uint16_t l_humidity = 0;
 	  uint16_t l_temperature = 0;
 		uint8_t l_crc = 0;
@@ -85,21 +81,23 @@ bool DHT22::parse(uint8_t a_data[5], float* a_ptemperature, float* a_phumidity) 
 	}
 
 
-	bool DHT22::GetMeasurement(float* a_ptemperature, float* a_phumidity){
+	bool GetMeasurement(dht22MeasureObject &MeasureObject){
 	
 	uint8_t l_Presence = -1;
 	uint8_t l_data[5] ={0};
 	bool isValid = false;
 			
-		this->Start();
-		l_Presence = this->Check_Response();
+		Start();
+		l_Presence = Check_Response();
 		if(l_Presence != 1){return false;}
 		for(uint8_t i =0;i<5;i++)
 		{
-			l_data[i] = this->Read();
+			l_data[i] = Read();
 		}
-		isValid = this->parse(l_data,a_ptemperature,a_phumidity);
-		if(!isValid){*a_ptemperature = -100;*a_phumidity = -100; return false;}
+		
+		
+		isValid = parse(l_data,&MeasureObject.tmp,&MeasureObject.rh);
+		if(!isValid){MeasureObject.tmp = -100;MeasureObject.rh= -100; return false;}
 		return true;	
 			
 	}

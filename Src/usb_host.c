@@ -25,6 +25,8 @@
 #include "usbh_core.h"
 #include "usbh_msc.h"
 
+
+
 /* USER CODE BEGIN Includes */
 
 /* USER CODE END Includes */
@@ -55,8 +57,6 @@ FIL MyFile;
 FRESULT res;
 uint32_t bytesWritten;
 uint8_t rtext[200];
-uint8_t wtext[] = "USB Host Library : Mass Storage Example";
-uint8_t name[30]="NICE.txt";//name of the file
 uint16_t counter=0;
 uint32_t i=0;
 const int true =1;
@@ -76,12 +76,19 @@ uint8_t uart_tx_buffer[100];
 
 
 
-void save_to_usb(char* tmp_in_string,char* rh_in_string) {
-	char wbytes[40];
-	
-	
+uint8_t save_to_usb(const MeasureInformation l_MeasureObject) {
 	UINT bytesread;
 	FRESULT l_result = FR_DISK_ERR;
+	
+	
+	
+	char wbytes[40];
+	uint8_t file_name[35];//name of the file
+	
+
+	
+
+	
 	
 	
 	if (Appli_state == APPLICATION_READY) {		
@@ -93,14 +100,15 @@ void save_to_usb(char* tmp_in_string,char* rh_in_string) {
 			isChanged = true;
 		}
 		
-		
-		switch(f_stat(name,&fno)){
+		sprintf(file_name,"%d-%d-%d.txt",l_MeasureObject.date[0],l_MeasureObject.date[1],l_MeasureObject.date[2]);
+				
+		switch(f_stat(file_name,&fno)){
 			
 			case FR_NO_FILE:
-				l_result = f_open(&MyFile,name,FA_CREATE_NEW|FA_WRITE);
+				l_result = f_open(&MyFile,file_name,FA_CREATE_NEW|FA_WRITE);
 			break;
 			case FR_OK:
-				l_result = f_open(&MyFile,name,FA_OPEN_APPEND|FA_WRITE);
+				l_result = f_open(&MyFile,file_name,FA_OPEN_APPEND|FA_WRITE);
 			break;
 			// I don´t expect other errors
 			default:
@@ -110,18 +118,18 @@ void save_to_usb(char* tmp_in_string,char* rh_in_string) {
 			if(l_result == FR_OK){
 
 				
-
-				
-				memcpy(&wbytes[0],tmp_in_string,10);
+				sprintf(&wbytes[0],"%d-%d: ",l_MeasureObject.time[0],l_MeasureObject.time[1]);
+				strcat(wbytes,l_MeasureObject.temp_in_string);
 				strcat(wbytes,"  ");
-				strcat(wbytes,rh_in_string);
+				strcat(wbytes,l_MeasureObject.rh_in_string);
 				strcat(wbytes,"\n");
 				
 				
-				HAL_UART_Transmit(&huart3, &wbytes[0], 40,1000);
+				HAL_UART_Transmit(&huart3, &wbytes[0], 50,1000);
 				f_puts(wbytes,&MyFile);	
 				f_close(&MyFile);
 				
+				return true;
 			}
 
 
@@ -131,7 +139,7 @@ void save_to_usb(char* tmp_in_string,char* rh_in_string) {
 					isMounted = false;
 	}
 	
-	
+	return false;
 	
 }
 

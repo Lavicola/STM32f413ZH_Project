@@ -30,7 +30,10 @@
 /* Includes ------------------------------------------------------------------*/
 #include "stm32f4xx.h"
 #include "stm32f4xx_hal.h"
+#include "MeasureInformationObject.h"
 
+	 
+	 
 /* USER CODE BEGIN INCLUDE */
 
 /* USER CODE END INCLUDE */
@@ -73,7 +76,7 @@ void MX_USB_HOST_Init(void);
 
 void MX_USB_HOST_Process(void);
 
-void save_to_usb(char* rmp_in_string ,char* rh_in_string);
+uint8_t save_to_usb(const MeasureInformation l_MeasureObject);
 
 /**
   * @}

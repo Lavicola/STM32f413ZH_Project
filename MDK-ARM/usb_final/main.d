@@ -58,9 +58,9 @@ usb_final\main.o: ../Middlewares/Third_Party/FatFs/src/ff_gen_drv.h
 usb_final\main.o: ../Middlewares/Third_Party/FatFs/src/diskio.h
 usb_final\main.o: ../Inc/usbh_diskio.h
 usb_final\main.o: ../Inc/usb_host.h
+usb_final\main.o: ..\Custom\MeasureInformationObject.h
 usb_final\main.o: ..\Custom\FloatToString.h
 usb_final\main.o: ..\Custom\TIM_Delay.h
 usb_final\main.o: ..\Custom\I2c_lcd.h
-usb_final\main.o: ..\Custom\ComponentsManager.h
 usb_final\main.o: ..\Custom\dht22.h
 usb_final\main.o: ..\Custom\ISensor.h

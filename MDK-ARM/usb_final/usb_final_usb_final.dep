@@ -1,7 +1,7 @@
 Dependencies for Project 'usb_final', Target 'usb_final': (DO NOT MODIFY !)
 CompilerVersion: 5060750::V5.06 update 6 (build 750)::.\ARMCC
 F (startup_stm32f413xx.s)(0x5F023C8F)(--cpu Cortex-M4.fp.sp --pd "__EVAL SETA 1" -g --apcs=interwork -I.\RTE\_usb_final-I"C:\Users\Stein큦 Gate\AppData\Local\Arm\Packs\ARM\CMSIS\5.7.0\CMSIS\Core\Include"-I"C:\Users\Stein큦 Gate\AppData\Local\Arm\Packs\Keil\STM32F4xx_DFP\2.14.0\Drivers\CMSIS\Device\ST\STM32F4xx\Include"--pd "__UVISION_VERSION SETA 530" --pd "_RTE_ SETA 1" --pd "STM32F413xx SETA 1" --pd "_RTE_ SETA 1"--list startup_stm32f413xx.lst --xref -o usb_final\startup_stm32f413xx.o --depend usb_final\startup_stm32f413xx.d)
-F (../Src/main.c)(0x5F027F2B)(--cpp -c --cpu Cortex-M4.fp.sp -D__EVAL -g -O1 --apcs=interwork --split_sections -I ..\Custom -I ../Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I ../Middlewares/Third_Party/FatFs/src -I ../Middlewares/ST/STM32_USB_Host_Library/Core/Inc -I ../Middlewares/ST/STM32_USB_Host_Library/Class/MSC/Inc -I ../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I ../Drivers/CMSIS/Include-I.\RTE\_usb_final-I"C:\Users\Stein큦 Gate\AppData\Local\Arm\Packs\ARM\CMSIS\5.7.0\CMSIS\Core\Include"-I"C:\Users\Stein큦 Gate\AppData\Local\Arm\Packs\Keil\STM32F4xx_DFP\2.14.0\Drivers\CMSIS\Device\ST\STM32F4xx\Include"-D__UVISION_VERSION="530" -D_RTE_ -DSTM32F413xx -D_RTE_ -DUSE_HAL_DRIVER -DSTM32F413xx-o usb_final\main.o --omf_browse usb_final\main.crf --depend usb_final\main.d)
+F (../Src/main.c)(0x5F0337B3)(--cpp -c --cpu Cortex-M4.fp.sp -D__EVAL -g -O1 --apcs=interwork --split_sections -I ..\Custom -I ../Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I ../Middlewares/Third_Party/FatFs/src -I ../Middlewares/ST/STM32_USB_Host_Library/Core/Inc -I ../Middlewares/ST/STM32_USB_Host_Library/Class/MSC/Inc -I ../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I ../Drivers/CMSIS/Include-I.\RTE\_usb_final-I"C:\Users\Stein큦 Gate\AppData\Local\Arm\Packs\ARM\CMSIS\5.7.0\CMSIS\Core\Include"-I"C:\Users\Stein큦 Gate\AppData\Local\Arm\Packs\Keil\STM32F4xx_DFP\2.14.0\Drivers\CMSIS\Device\ST\STM32F4xx\Include"-D__UVISION_VERSION="530" -D_RTE_ -DSTM32F413xx -D_RTE_ -DUSE_HAL_DRIVER -DSTM32F413xx-o usb_final\main.o --omf_browse usb_final\main.crf --depend usb_final\main.d)
 I (../Inc/main.h)(0x5F027DDF)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h)(0x5ED4DC1D)
 I (../Inc/stm32f4xx_hal_conf.h)(0x5F023C8A)
@@ -58,12 +58,12 @@ I (../Middlewares/ST/STM32_USB_Host_Library/Class/MSC/Inc/usbh_msc_scsi.h)(0x5ED
 I (../Middlewares/Third_Party/FatFs/src/ff_gen_drv.h)(0x5ED4DC41)
 I (../Middlewares/Third_Party/FatFs/src/diskio.h)(0x5ED4DC41)
 I (../Inc/usbh_diskio.h)(0x5F023C85)
-I (../Inc/usb_host.h)(0x5F023E19)
+I (../Inc/usb_host.h)(0x5F032F44)
+I (..\Custom\MeasureInformationObject.h)(0x5F0337C8)
 I (..\Custom\FloatToString.h)(0x5F01F51A)
 I (..\Custom\TIM_Delay.h)(0x5F01F51A)
 I (..\Custom\I2c_lcd.h)(0x5EE92E58)
-I (..\Custom\ComponentsManager.h)(0x5F01F51A)
-I (..\Custom\dht22.h)(0x5F01F51A)
+I (..\Custom\dht22.h)(0x5F032B31)
 I (..\Custom\ISensor.h)(0x5F01F51A)
 F (../Src/usbh_diskio.c)(0x5F023C85)(-c --cpu Cortex-M4.fp.sp -D__EVAL -g -O1 --apcs=interwork --split_sections -I ..\Custom -I ../Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I ../Middlewares/Third_Party/FatFs/src -I ../Middlewares/ST/STM32_USB_Host_Library/Core/Inc -I ../Middlewares/ST/STM32_USB_Host_Library/Class/MSC/Inc -I ../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I ../Drivers/CMSIS/Include-I.\RTE\_usb_final-I"C:\Users\Stein큦 Gate\AppData\Local\Arm\Packs\ARM\CMSIS\5.7.0\CMSIS\Core\Include"-I"C:\Users\Stein큦 Gate\AppData\Local\Arm\Packs\Keil\STM32F4xx_DFP\2.14.0\Drivers\CMSIS\Device\ST\STM32F4xx\Include"-D__UVISION_VERSION="530" -D_RTE_ -DSTM32F413xx -D_RTE_ -DUSE_HAL_DRIVER -DSTM32F413xx-o usb_final\usbh_diskio.o --omf_browse usb_final\usbh_diskio.crf --depend usb_final\usbh_diskio.d)
 I (../Middlewares/Third_Party/FatFs/src/ff_gen_drv.h)(0x5ED4DC41)
@@ -178,8 +178,8 @@ I (../Middlewares/ST/STM32_USB_Host_Library/Class/MSC/Inc/usbh_msc_scsi.h)(0x5ED
 I (../Middlewares/Third_Party/FatFs/src/ff_gen_drv.h)(0x5ED4DC41)
 I (../Middlewares/Third_Party/FatFs/src/diskio.h)(0x5ED4DC41)
 I (../Inc/usbh_diskio.h)(0x5F023C85)
-F (../Src/usb_host.c)(0x5F0242B7)(-c --cpu Cortex-M4.fp.sp -D__EVAL -g -O1 --apcs=interwork --split_sections -I ..\Custom -I ../Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I ../Middlewares/Third_Party/FatFs/src -I ../Middlewares/ST/STM32_USB_Host_Library/Core/Inc -I ../Middlewares/ST/STM32_USB_Host_Library/Class/MSC/Inc -I ../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I ../Drivers/CMSIS/Include-I.\RTE\_usb_final-I"C:\Users\Stein큦 Gate\AppData\Local\Arm\Packs\ARM\CMSIS\5.7.0\CMSIS\Core\Include"-I"C:\Users\Stein큦 Gate\AppData\Local\Arm\Packs\Keil\STM32F4xx_DFP\2.14.0\Drivers\CMSIS\Device\ST\STM32F4xx\Include"-D__UVISION_VERSION="530" -D_RTE_ -DSTM32F413xx -D_RTE_ -DUSE_HAL_DRIVER -DSTM32F413xx-o usb_final\usb_host.o --omf_browse usb_final\usb_host.crf --depend usb_final\usb_host.d)
-I (../Inc/usb_host.h)(0x5F023E19)
+F (../Src/usb_host.c)(0x5F033F22)(-c --cpu Cortex-M4.fp.sp -D__EVAL -g -O1 --apcs=interwork --split_sections -I ..\Custom -I ../Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I ../Middlewares/Third_Party/FatFs/src -I ../Middlewares/ST/STM32_USB_Host_Library/Core/Inc -I ../Middlewares/ST/STM32_USB_Host_Library/Class/MSC/Inc -I ../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I ../Drivers/CMSIS/Include-I.\RTE\_usb_final-I"C:\Users\Stein큦 Gate\AppData\Local\Arm\Packs\ARM\CMSIS\5.7.0\CMSIS\Core\Include"-I"C:\Users\Stein큦 Gate\AppData\Local\Arm\Packs\Keil\STM32F4xx_DFP\2.14.0\Drivers\CMSIS\Device\ST\STM32F4xx\Include"-D__UVISION_VERSION="530" -D_RTE_ -DSTM32F413xx -D_RTE_ -DUSE_HAL_DRIVER -DSTM32F413xx-o usb_final\usb_host.o --omf_browse usb_final\usb_host.crf --depend usb_final\usb_host.d)
+I (../Inc/usb_host.h)(0x5F032F44)
 I (../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f4xx.h)(0x5ED4DC07)
 I (../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f413xx.h)(0x5ED4DC07)
 I (../Drivers/CMSIS/Include/core_cm4.h)(0x5ED4DC15)
@@ -216,6 +216,7 @@ I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim_ex.h)(0x5ED4DC1E)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_uart.h)(0x5ED4DC1E)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_hcd.h)(0x5ED4DC1D)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_ll_usb.h)(0x5ED4DC1E)
+I (..\Custom\MeasureInformationObject.h)(0x5F0337C8)
 I (../Middlewares/ST/STM32_USB_Host_Library/Core/Inc/usbh_core.h)(0x5ED4DC2D)
 I (../Inc/usbh_conf.h)(0x5F023C87)
 I (C:\Keil_v5\ARM\ARMCC\include\stdio.h)(0x5E53A4BC)
@@ -280,10 +281,11 @@ I (../Middlewares/ST/STM32_USB_Host_Library/Core/Inc/usbh_ioreq.h)(0x5ED4DC2D)
 I (../Middlewares/ST/STM32_USB_Host_Library/Core/Inc/usbh_pipes.h)(0x5ED4DC2D)
 I (../Middlewares/ST/STM32_USB_Host_Library/Core/Inc/usbh_ctlreq.h)(0x5ED4DC2D)
 I (../Inc/usbh_platform.h)(0x5F023C88)
-I (../Inc/usb_host.h)(0x5F023E19)
+I (../Inc/usb_host.h)(0x5F032F44)
+I (..\Custom\MeasureInformationObject.h)(0x5F0337C8)
 F (../Src/usbh_platform.c)(0x5F023C88)(-c --cpu Cortex-M4.fp.sp -D__EVAL -g -O1 --apcs=interwork --split_sections -I ..\Custom -I ../Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I ../Middlewares/Third_Party/FatFs/src -I ../Middlewares/ST/STM32_USB_Host_Library/Core/Inc -I ../Middlewares/ST/STM32_USB_Host_Library/Class/MSC/Inc -I ../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I ../Drivers/CMSIS/Include-I.\RTE\_usb_final-I"C:\Users\Stein큦 Gate\AppData\Local\Arm\Packs\ARM\CMSIS\5.7.0\CMSIS\Core\Include"-I"C:\Users\Stein큦 Gate\AppData\Local\Arm\Packs\Keil\STM32F4xx_DFP\2.14.0\Drivers\CMSIS\Device\ST\STM32F4xx\Include"-D__UVISION_VERSION="530" -D_RTE_ -DSTM32F413xx -D_RTE_ -DUSE_HAL_DRIVER -DSTM32F413xx-o usb_final\usbh_platform.o --omf_browse usb_final\usbh_platform.crf --depend usb_final\usbh_platform.d)
 I (../Inc/usbh_platform.h)(0x5F023C88)
-I (../Inc/usb_host.h)(0x5F023E19)
+I (../Inc/usb_host.h)(0x5F032F44)
 I (../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f4xx.h)(0x5ED4DC07)
 I (../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f413xx.h)(0x5ED4DC07)
 I (../Drivers/CMSIS/Include/core_cm4.h)(0x5ED4DC15)
@@ -320,6 +322,7 @@ I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim_ex.h)(0x5ED4DC1E)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_uart.h)(0x5ED4DC1E)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_hcd.h)(0x5ED4DC1D)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_ll_usb.h)(0x5ED4DC1E)
+I (..\Custom\MeasureInformationObject.h)(0x5F0337C8)
 F (../Src/stm32f4xx_it.c)(0x5F023C89)(-c --cpu Cortex-M4.fp.sp -D__EVAL -g -O1 --apcs=interwork --split_sections -I ..\Custom -I ../Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I ../Middlewares/Third_Party/FatFs/src -I ../Middlewares/ST/STM32_USB_Host_Library/Core/Inc -I ../Middlewares/ST/STM32_USB_Host_Library/Class/MSC/Inc -I ../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I ../Drivers/CMSIS/Include-I.\RTE\_usb_final-I"C:\Users\Stein큦 Gate\AppData\Local\Arm\Packs\ARM\CMSIS\5.7.0\CMSIS\Core\Include"-I"C:\Users\Stein큦 Gate\AppData\Local\Arm\Packs\Keil\STM32F4xx_DFP\2.14.0\Drivers\CMSIS\Device\ST\STM32F4xx\Include"-D__UVISION_VERSION="530" -D_RTE_ -DSTM32F413xx -D_RTE_ -DUSE_HAL_DRIVER -DSTM32F413xx-o usb_final\stm32f4xx_it.o --omf_browse usb_final\stm32f4xx_it.crf --depend usb_final\stm32f4xx_it.d)
 I (../Inc/main.h)(0x5F027DDF)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h)(0x5ED4DC1D)
@@ -1844,9 +1847,9 @@ I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_hcd.h)(0x5ED4DC1D)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_ll_usb.h)(0x5ED4DC1E)
 F (..\Custom\TIM_Delay.h)(0x5F01F51A)()
 F (..\Custom\ISensor.h)(0x5F01F51A)()
-F (..\Custom\dht22.h)(0x5F01F51A)()
-F (..\Custom\dht22.cpp)(0x5F01F51A)(--cpp -c --cpu Cortex-M4.fp.sp -D__EVAL -g -O1 --apcs=interwork --split_sections -I ../Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I ../Middlewares/Third_Party/FatFs/src -I ../Middlewares/ST/STM32_USB_Host_Library/Core/Inc -I ../Middlewares/ST/STM32_USB_Host_Library/Class/MSC/Inc -I ../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I ../Drivers/CMSIS/Include-I.\RTE\_usb_final-I"C:\Users\Stein큦 Gate\AppData\Local\Arm\Packs\ARM\CMSIS\5.7.0\CMSIS\Core\Include"-I"C:\Users\Stein큦 Gate\AppData\Local\Arm\Packs\Keil\STM32F4xx_DFP\2.14.0\Drivers\CMSIS\Device\ST\STM32F4xx\Include"-D__UVISION_VERSION="530" -D_RTE_ -DSTM32F413xx -D_RTE_ -DUSE_HAL_DRIVER -DSTM32F413xx-o usb_final\dht22.o --omf_browse usb_final\dht22.crf --depend usb_final\dht22.d)
-I (..\Custom\dht22.h)(0x5F01F51A)
+F (..\Custom\dht22.h)(0x5F032B31)()
+F (..\Custom\dht22.cpp)(0x5F032B2B)(--cpp -c --cpu Cortex-M4.fp.sp -D__EVAL -g -O1 --apcs=interwork --split_sections -I ../Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I ../Middlewares/Third_Party/FatFs/src -I ../Middlewares/ST/STM32_USB_Host_Library/Core/Inc -I ../Middlewares/ST/STM32_USB_Host_Library/Class/MSC/Inc -I ../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I ../Drivers/CMSIS/Include-I.\RTE\_usb_final-I"C:\Users\Stein큦 Gate\AppData\Local\Arm\Packs\ARM\CMSIS\5.7.0\CMSIS\Core\Include"-I"C:\Users\Stein큦 Gate\AppData\Local\Arm\Packs\Keil\STM32F4xx_DFP\2.14.0\Drivers\CMSIS\Device\ST\STM32F4xx\Include"-D__UVISION_VERSION="530" -D_RTE_ -DSTM32F413xx -D_RTE_ -DUSE_HAL_DRIVER -DSTM32F413xx-o usb_final\dht22.o --omf_browse usb_final\dht22.crf --depend usb_final\dht22.d)
+I (..\Custom\dht22.h)(0x5F032B31)
 I (..\Custom\ISensor.h)(0x5F01F51A)
 I (C:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x5E53A4BC)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h)(0x5ED4DC1D)
@@ -1923,50 +1926,8 @@ I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim_ex.h)(0x5ED4DC1E)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_uart.h)(0x5ED4DC1E)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_hcd.h)(0x5ED4DC1D)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_ll_usb.h)(0x5ED4DC1E)
-F (..\Custom\ComponentsManager.h)(0x5F01F51A)()
-F (..\Custom\ComponentsManager.cpp)(0x5F01F51A)(--cpp -c --cpu Cortex-M4.fp.sp -D__EVAL -g -O1 --apcs=interwork --split_sections -I ../Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I ../Middlewares/Third_Party/FatFs/src -I ../Middlewares/ST/STM32_USB_Host_Library/Core/Inc -I ../Middlewares/ST/STM32_USB_Host_Library/Class/MSC/Inc -I ../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I ../Drivers/CMSIS/Include-I.\RTE\_usb_final-I"C:\Users\Stein큦 Gate\AppData\Local\Arm\Packs\ARM\CMSIS\5.7.0\CMSIS\Core\Include"-I"C:\Users\Stein큦 Gate\AppData\Local\Arm\Packs\Keil\STM32F4xx_DFP\2.14.0\Drivers\CMSIS\Device\ST\STM32F4xx\Include"-D__UVISION_VERSION="530" -D_RTE_ -DSTM32F413xx -D_RTE_ -DUSE_HAL_DRIVER -DSTM32F413xx-o usb_final\componentsmanager.o --omf_browse usb_final\componentsmanager.crf --depend usb_final\componentsmanager.d)
-I (..\Custom\ComponentsManager.h)(0x5F01F51A)
-I (..\Custom\dht22.h)(0x5F01F51A)
-I (..\Custom\ISensor.h)(0x5F01F51A)
-I (C:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x5E53A4BC)
-I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h)(0x5ED4DC1D)
-I (../Inc/stm32f4xx_hal_conf.h)(0x5F023C8A)
-I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_rcc.h)(0x5ED4DC1E)
-I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_def.h)(0x5ED4DC1D)
-I (../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f4xx.h)(0x5ED4DC07)
-I (../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f413xx.h)(0x5ED4DC07)
-I (../Drivers/CMSIS/Include/core_cm4.h)(0x5ED4DC15)
-I (../Drivers/CMSIS/Include/cmsis_version.h)(0x5ED4DC15)
-I (../Drivers/CMSIS/Include/cmsis_compiler.h)(0x5ED4DC15)
-I (../Drivers/CMSIS/Include/cmsis_armcc.h)(0x5ED4DC15)
-I (../Drivers/CMSIS/Include/mpu_armv7.h)(0x5ED4DC15)
-I (../Drivers/CMSIS/Device/ST/STM32F4xx/Include/system_stm32f4xx.h)(0x5ED4DC07)
-I (../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy/stm32_hal_legacy.h)(0x5ED4DC1D)
-I (C:\Keil_v5\ARM\ARMCC\include\stddef.h)(0x5E53A4BC)
-I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_rcc_ex.h)(0x5ED4DC1E)
-I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_exti.h)(0x5ED4DC1D)
-I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_gpio.h)(0x5ED4DC1D)
-I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_gpio_ex.h)(0x5ED4DC1D)
-I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_dma.h)(0x5ED4DC1D)
-I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_dma_ex.h)(0x5ED4DC1D)
-I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_cortex.h)(0x5ED4DC1D)
-I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_flash.h)(0x5ED4DC1D)
-I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_flash_ex.h)(0x5ED4DC1D)
-I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_flash_ramfunc.h)(0x5ED4DC1D)
-I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_i2c.h)(0x5ED4DC1D)
-I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_i2c_ex.h)(0x5ED4DC1E)
-I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_pwr.h)(0x5ED4DC1E)
-I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_pwr_ex.h)(0x5ED4DC1E)
-I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_rtc.h)(0x5ED4DC1E)
-I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_rtc_ex.h)(0x5ED4DC1E)
-I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim.h)(0x5ED4DC1E)
-I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim_ex.h)(0x5ED4DC1E)
-I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_uart.h)(0x5ED4DC1E)
-I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_hcd.h)(0x5ED4DC1D)
-I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_ll_usb.h)(0x5ED4DC1E)
-F (..\Custom\FloatToString.cpp)(0x5F01F51A)(--cpp -c --cpu Cortex-M4.fp.sp -D__EVAL -g -O1 --apcs=interwork --split_sections -I ../Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I ../Middlewares/Third_Party/FatFs/src -I ../Middlewares/ST/STM32_USB_Host_Library/Core/Inc -I ../Middlewares/ST/STM32_USB_Host_Library/Class/MSC/Inc -I ../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I ../Drivers/CMSIS/Include-I.\RTE\_usb_final-I"C:\Users\Stein큦 Gate\AppData\Local\Arm\Packs\ARM\CMSIS\5.7.0\CMSIS\Core\Include"-I"C:\Users\Stein큦 Gate\AppData\Local\Arm\Packs\Keil\STM32F4xx_DFP\2.14.0\Drivers\CMSIS\Device\ST\STM32F4xx\Include"-D__UVISION_VERSION="530" -D_RTE_ -DSTM32F413xx -D_RTE_ -DUSE_HAL_DRIVER -DSTM32F413xx-o usb_final\floattostring.o --omf_browse usb_final\floattostring.crf --depend usb_final\floattostring.d)
+F (..\Custom\FloatToString.cpp)(0x5F03233D)(--cpp -c --cpu Cortex-M4.fp.sp -D__EVAL -g -O1 --apcs=interwork --split_sections -I ../Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I ../Middlewares/Third_Party/FatFs/src -I ../Middlewares/ST/STM32_USB_Host_Library/Core/Inc -I ../Middlewares/ST/STM32_USB_Host_Library/Class/MSC/Inc -I ../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I ../Drivers/CMSIS/Include-I.\RTE\_usb_final-I"C:\Users\Stein큦 Gate\AppData\Local\Arm\Packs\ARM\CMSIS\5.7.0\CMSIS\Core\Include"-I"C:\Users\Stein큦 Gate\AppData\Local\Arm\Packs\Keil\STM32F4xx_DFP\2.14.0\Drivers\CMSIS\Device\ST\STM32F4xx\Include"-D__UVISION_VERSION="530" -D_RTE_ -DSTM32F413xx -D_RTE_ -DUSE_HAL_DRIVER -DSTM32F413xx-o usb_final\floattostring.o --omf_browse usb_final\floattostring.crf --depend usb_final\floattostring.d)
 I (..\Custom\FloatToString.h)(0x5F01F51A)
-I (C:\Keil_v5\ARM\ARMCC\include\string.h)(0x5E53A4BC)
 F (..\Custom\FloatToString.h)(0x5F01F51A)()
 F (..\Custom\I2c_lcd.h)(0x5EE92E58)()
 F (..\Custom\I2c_lcd.cpp)(0x5EE92DF0)(--cpp -c --cpu Cortex-M4.fp.sp -D__EVAL -g -O1 --apcs=interwork --split_sections -I ../Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I ../Middlewares/Third_Party/FatFs/src -I ../Middlewares/ST/STM32_USB_Host_Library/Core/Inc -I ../Middlewares/ST/STM32_USB_Host_Library/Class/MSC/Inc -I ../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I ../Drivers/CMSIS/Include-I.\RTE\_usb_final-I"C:\Users\Stein큦 Gate\AppData\Local\Arm\Packs\ARM\CMSIS\5.7.0\CMSIS\Core\Include"-I"C:\Users\Stein큦 Gate\AppData\Local\Arm\Packs\Keil\STM32F4xx_DFP\2.14.0\Drivers\CMSIS\Device\ST\STM32F4xx\Include"-D__UVISION_VERSION="530" -D_RTE_ -DSTM32F413xx -D_RTE_ -DUSE_HAL_DRIVER -DSTM32F413xx-o usb_final\i2c_lcd.o --omf_browse usb_final\i2c_lcd.crf --depend usb_final\i2c_lcd.d)
@@ -2007,3 +1968,4 @@ I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim_ex.h)(0x5ED4DC1E)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_uart.h)(0x5ED4DC1E)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_hcd.h)(0x5ED4DC1D)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_ll_usb.h)(0x5ED4DC1E)
+F (..\Custom\MeasureInformationObject.h)(0x5F0337C8)()
