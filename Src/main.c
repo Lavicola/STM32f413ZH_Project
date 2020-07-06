@@ -24,13 +24,15 @@ extern "C"{
 #include "fatfs.h"
 #include "usb_host.h"
 }
+
+/* Private includes ----------------------------------------------------------*/
+/* USER CODE BEGIN Includes */
+
 #include "FloatToString.h"
 #include "TIM_Delay.h"
 #include "I2c_lcd.h"
 #include "dht22.h"
 
-/* Private includes ----------------------------------------------------------*/
-/* USER CODE BEGIN Includes */
 
 /* USER CODE END Includes */
 
@@ -54,8 +56,6 @@ I2C_HandleTypeDef hi2c1;
 RTC_HandleTypeDef hrtc;
 
 UART_HandleTypeDef huart3;
-
-
 
 
 /* USER CODE BEGIN PV */
@@ -120,6 +120,7 @@ int main(void)
   MX_TIM3_Init();
   MX_I2C1_Init();
   MX_RTC_Init();
+
   /* USER CODE BEGIN 2 */
 	TIM_Start();
   /* USER CODE END 2 */
@@ -199,6 +200,7 @@ void SystemClock_Config(void)
     Error_Handler();
   }
 }
+
 
 /**
   * @brief I2C1 Initialization Function
@@ -411,6 +413,8 @@ static void MX_GPIO_Init(void)
 
 /* USER CODE BEGIN 4 */
 
+
+
 void HAL_RTC_AlarmAEventCallback(RTC_HandleTypeDef *hrtc){
 
 
@@ -474,7 +478,16 @@ HAL_RTC_GetTime(&hrtc, &currentTime, FORMAT_BIN);
 	
 }
 
+void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef* htim){
 
+int a =5;
+	
+	while(1){
+	a=10;
+	}
+	
+	return;
+}
 
 
 /* USER CODE END 4 */
