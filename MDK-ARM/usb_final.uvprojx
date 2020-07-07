@@ -339,7 +339,7 @@
               <MiscControls></MiscControls>
               <Define>USE_HAL_DRIVER,STM32F413xx</Define>
               <Undefine></Undefine>
-              <IncludePath>../Inc; ../Drivers/STM32F4xx_HAL_Driver/Inc; ../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy; ../Middlewares/Third_Party/FatFs/src; ../Middlewares/ST/STM32_USB_Host_Library/Core/Inc; ../Middlewares/ST/STM32_USB_Host_Library/Class/MSC/Inc; ../Drivers/CMSIS/Device/ST/STM32F4xx/Include; ../Drivers/CMSIS/Include</IncludePath>
+              <IncludePath>../Inc;  ../Drivers/STM32F4xx_HAL_Driver/Inc;  ../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy;  ../Middlewares/Third_Party/FatFs/src;  ../Middlewares/ST/STM32_USB_Host_Library/Core/Inc;  ../Middlewares/ST/STM32_USB_Host_Library/Class/MSC/Inc;  ../Drivers/CMSIS/Device/ST/STM32F4xx/Include;  ../Drivers/CMSIS/Include</IncludePath>
             </VariousControls>
           </Cads>
           <Aads>
@@ -751,6 +751,16 @@
               <FileName>MeasureInformationObject.h</FileName>
               <FileType>5</FileType>
               <FilePath>..\Custom\MeasureInformationObject.h</FilePath>
+            </File>
+            <File>
+              <FileName>Ds18b20.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\Custom\Ds18b20.h</FilePath>
+            </File>
+            <File>
+              <FileName>Ds18b20.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>..\Custom\Ds18b20.cpp</FilePath>
             </File>
           </Files>
         </Group>

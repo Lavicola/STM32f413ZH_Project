@@ -1,3 +1,4 @@
+#pragma once
 #include <stdint.h>
 extern "C"{
 #include "stm32f4xx_hal.h"

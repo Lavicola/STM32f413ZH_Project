@@ -64,3 +64,4 @@ usb_final\main.o: ..\Custom\TIM_Delay.h
 usb_final\main.o: ..\Custom\I2c_lcd.h
 usb_final\main.o: ..\Custom\dht22.h
 usb_final\main.o: ..\Custom\ISensor.h
+usb_final\main.o: ..\Custom\Ds18b20.h

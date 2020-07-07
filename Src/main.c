@@ -30,7 +30,7 @@
 #include "TIM_Delay.h"
 #include "I2c_lcd.h"
 #include "dht22.h"
-
+#include "Ds18b20.h"
 
 /* USER CODE END Includes */
 
@@ -58,7 +58,9 @@ TIM_HandleTypeDef htim10;
 UART_HandleTypeDef huart3;
 
 /* USER CODE BEGIN PV */
-
+#define MAXTEMP 20.0
+#define RELAY_PORT GPIOC
+#define RELAY_PIN GPIO_PIN_7
 
 /* USER CODE END PV */
 
@@ -115,8 +117,8 @@ int main(void)
   MX_GPIO_Init();
   MX_USART3_UART_Init();
   MX_FATFS_Init();
+	MX_TIM3_Init();
   MX_USB_HOST_Init();
-  MX_TIM3_Init();
   MX_I2C1_Init();
   MX_RTC_Init();
   MX_TIM10_Init();
@@ -273,9 +275,9 @@ static void MX_RTC_Init(void)
 
   /** Initialize RTC and set the Time and Date 
   */
-  sTime.Hours = 0x02;
-  sTime.Minutes = 0x20;
-  sTime.Seconds = 0x00;
+  sTime.Hours = 0x22;
+  sTime.Minutes = 0x0;
+  sTime.Seconds = 0x0;
   sTime.DayLightSaving = RTC_DAYLIGHTSAVING_ADD1H;
   sTime.StoreOperation = RTC_STOREOPERATION_RESET;
   if (HAL_RTC_SetTime(&hrtc, &sTime, RTC_FORMAT_BCD) != HAL_OK)
@@ -284,7 +286,7 @@ static void MX_RTC_Init(void)
   }
   sDate.WeekDay = RTC_WEEKDAY_SUNDAY;
   sDate.Month = RTC_MONTH_JULY;
-  sDate.Date = 0x6;
+  sDate.Date = 0x5;
   sDate.Year = 0x20;
 
   if (HAL_RTC_SetDate(&hrtc, &sDate, RTC_FORMAT_BCD) != HAL_OK)
@@ -293,14 +295,14 @@ static void MX_RTC_Init(void)
   }
   /** Enable the Alarm A 
   */
-  sAlarm.AlarmTime.Hours = 0x00;
-  sAlarm.AlarmTime.Minutes = 0x00;
-  sAlarm.AlarmTime.Seconds = 0x00;
-  sAlarm.AlarmTime.SubSeconds = 0x00;
+  sAlarm.AlarmTime.Hours = 0x10;
+  sAlarm.AlarmTime.Minutes = 0x10;
+  sAlarm.AlarmTime.Seconds = 0x0;
+  sAlarm.AlarmTime.SubSeconds = 0x0;
   sAlarm.AlarmTime.DayLightSaving = RTC_DAYLIGHTSAVING_ADD1H;
   sAlarm.AlarmTime.StoreOperation = RTC_STOREOPERATION_RESET;
   sAlarm.AlarmMask = RTC_ALARMMASK_DATEWEEKDAY|RTC_ALARMMASK_HOURS|RTC_ALARMMASK_MINUTES;
-  sAlarm.AlarmSubSecondMask = RTC_ALARMSUBSECONDMASK_NONE;
+  sAlarm.AlarmSubSecondMask = RTC_ALARMSUBSECONDMASK_ALL;
   sAlarm.AlarmDateWeekDaySel = RTC_ALARMDATEWEEKDAYSEL_DATE;
   sAlarm.AlarmDateWeekDay = 1;
   sAlarm.Alarm = RTC_ALARM_A;
@@ -314,6 +316,11 @@ static void MX_RTC_Init(void)
 
 }
 
+/**
+  * @brief TIM3 Initialization Function
+  * @param None
+  * @retval None
+  */
 
 /**
   * @brief TIM10 Initialization Function
@@ -333,7 +340,7 @@ static void MX_TIM10_Init(void)
   htim10.Instance = TIM10;
   htim10.Init.Prescaler = 0xA18D-1;
   htim10.Init.CounterMode = TIM_COUNTERMODE_UP;
-  htim10.Init.Period = 0xfffE-1;
+  htim10.Init.Period = 0xffff-1;
   htim10.Init.ClockDivision = TIM_CLOCKDIVISION_DIV1;
   htim10.Init.AutoReloadPreload = TIM_AUTORELOAD_PRELOAD_DISABLE;
   if (HAL_TIM_Base_Init(&htim10) != HAL_OK)
@@ -418,22 +425,35 @@ static void MX_GPIO_Init(void)
   GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
   HAL_GPIO_Init(GPIOA, &GPIO_InitStruct);
 
-
-  /*Configure GPIO pin : PC7 */
-	GPIO_InitStruct.Pin = GPIO_PIN_7;
-  GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
-  GPIO_InitStruct.Pull = GPIO_NOPULL;
-	GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
-  HAL_GPIO_Init(GPIOC, &GPIO_InitStruct);
-
-
-
   /*Configure GPIO pins : LD1_Pin LD3_Pin LD2_Pin */
   GPIO_InitStruct.Pin = LD1_Pin|LD3_Pin|LD2_Pin;
   GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
   GPIO_InitStruct.Pull = GPIO_NOPULL;
   GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
   HAL_GPIO_Init(GPIOB, &GPIO_InitStruct);
+	
+	//dh20
+	
+	/*Configure GPIO pin Output Level */
+  HAL_GPIO_WritePin(GPIOA, DS18B20_PIN, GPIO_PIN_RESET);
+
+  /*Configure GPIO pin : PA1 */
+  GPIO_InitStruct.Pin = DS18B20_PIN;
+  GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
+  GPIO_InitStruct.Pull = GPIO_NOPULL;
+  GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
+  HAL_GPIO_Init(DS18B20_PORT, &GPIO_InitStruct);
+
+	
+	//relay
+	
+	/*Configure GPIO pin : PC7 */
+	GPIO_InitStruct.Pin = RELAY_PIN;
+  GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
+  GPIO_InitStruct.Pull = GPIO_NOPULL;
+	GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
+  HAL_GPIO_Init(RELAY_PORT, &GPIO_InitStruct);
+	
 
   /*Configure GPIO pin : USB_PowerSwitchOn_Pin */
   GPIO_InitStruct.Pin = USB_PowerSwitchOn_Pin;
@@ -444,9 +464,8 @@ static void MX_GPIO_Init(void)
 
   /*Configure GPIO pin : USB_OverCurrent_Pin */
   GPIO_InitStruct.Pin = USB_OverCurrent_Pin;
-  GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
+  GPIO_InitStruct.Mode = GPIO_MODE_INPUT;
   GPIO_InitStruct.Pull = GPIO_NOPULL;
-	GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
   HAL_GPIO_Init(USB_OverCurrent_GPIO_Port, &GPIO_InitStruct);
 
 }
@@ -456,18 +475,30 @@ static void MX_GPIO_Init(void)
 /* USER CODE BEGIN 4 */
 void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef* htim){
 	
-	  GPIO_InitTypeDef GPIO_InitStruct = {0};
+	float l_tmp;
+	GPIO_InitTypeDef GPIO_InitStruct = {0};
 
+	DS18B20_GetMeasurement(l_tmp);
 	
-		GPIO_InitStruct.Pin = GPIO_PIN_7;
-		GPIO_InitStruct.Mode = GPIO_MODE_INPUT;
-		GPIO_InitStruct.Pull = GPIO_NOPULL;
-		GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
-		HAL_GPIO_Init(GPIOC, &GPIO_InitStruct);
+	
+		if(l_tmp > MAXTEMP){
+			//turn on
+	GPIO_InitStruct.Pin = RELAY_PIN;
+  GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
+  GPIO_InitStruct.Pull = GPIO_NOPULL;
+	GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
+  HAL_GPIO_Init(RELAY_PORT, &GPIO_InitStruct);
+		}else{
+			//turn off
+	GPIO_InitStruct.Pin = RELAY_PIN;
+  GPIO_InitStruct.Mode = GPIO_MODE_INPUT;
+  GPIO_InitStruct.Pull = GPIO_NOPULL;
+	GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
+  HAL_GPIO_Init(RELAY_PORT, &GPIO_InitStruct);
 
-
+			
+		}
 	  
-	
 		return;	
 }
 
@@ -476,9 +507,9 @@ void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef* htim){
 
 void HAL_RTC_AlarmAEventCallback(RTC_HandleTypeDef *hrtc){
 
-
-dht22MeasureObject l_Measurement;
-MeasureInformation l_MeasureObject;
+	
+	dht22MeasureObject l_Measurement;
+	MeasureInformation l_MeasureObject;
 		
 	GetMeasurement(l_Measurement);
 	memcpy(&l_MeasureObject.temp_in_string[0],"Temp: ",6);
@@ -503,6 +534,10 @@ MeasureInformation l_MeasureObject;
 		lcd_send_string(l_MeasureObject.temp_in_string);
 		lcd_send_cmd(0xc0|0xc0);
 		lcd_send_string(l_MeasureObject.rh_in_string);
+	
+	
+	
+	
 	
 	
 	
