@@ -118,7 +118,7 @@ uint8_t save_to_usb(const MeasureInformation l_MeasureObject) {
 			if(l_result == FR_OK){
 
 				
-				sprintf(&wbytes[0],"%d-%d: ",l_MeasureObject.time[0],l_MeasureObject.time[1]);
+				sprintf(&wbytes[0],"%d-%d: ",(int)l_MeasureObject.time[0],(int)l_MeasureObject.time[1]);
 				strcat(wbytes,l_MeasureObject.temp_in_string);
 				strcat(wbytes,"  ");
 				strcat(wbytes,l_MeasureObject.rh_in_string);

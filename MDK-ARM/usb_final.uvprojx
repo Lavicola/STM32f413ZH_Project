@@ -762,6 +762,16 @@
               <FileType>8</FileType>
               <FilePath>..\Custom\Ds18b20.cpp</FilePath>
             </File>
+            <File>
+              <FileName>ComponentsManager.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>..\Custom\ComponentsManager.cpp</FilePath>
+            </File>
+            <File>
+              <FileName>ComponentsManager.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\Custom\ComponentsManager.h</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>

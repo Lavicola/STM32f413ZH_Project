@@ -1,7 +1,8 @@
 usb_final\ds18b20.o: ..\Custom\Ds18b20.cpp
 usb_final\ds18b20.o: ..\Custom\Ds18b20.h
-usb_final\ds18b20.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
 usb_final\ds18b20.o: ..\Custom\ISensor.h
+usb_final\ds18b20.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
+usb_final\ds18b20.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdbool.h
 usb_final\ds18b20.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h
 usb_final\ds18b20.o: ../Inc/stm32f4xx_hal_conf.h
 usb_final\ds18b20.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_rcc.h

@@ -1,28 +1,42 @@
 #include "Ds18b20.h"
-#include "ISensor.h"
 #include "TIM_Delay.h"
 
-uint8_t DS18B20_Start (void)
+
+
+DS18B20::DS18B20(uint16_t a_pin,GPIO_TypeDef* a_port){
+	m_GPIO_PIN = a_pin;
+	m_GPIO_PORT = a_port;			
+}
+
+void DS18B20::Start(void)
 {
-	uint8_t Response = 0;
-	ISensor::Set_Pin_Output(DS18B20_PORT, DS18B20_PIN);   // set the pin as output
-	HAL_GPIO_WritePin (DS18B20_PORT, DS18B20_PIN, GPIO_PIN_RESET);  // pull the pin low
+	Set_Pin_Output(m_GPIO_PORT, m_GPIO_PIN);   // set the pin as output
+	HAL_GPIO_WritePin (m_GPIO_PORT, m_GPIO_PIN, GPIO_PIN_RESET);  // pull the pin low
 	delay (480);   // delay according to datasheet
 
-	ISensor::Set_Pin_Input(DS18B20_PORT, DS18B20_PIN);    // set the pin as input
+	Set_Pin_Input(m_GPIO_PORT, m_GPIO_PIN);    // set the pin as input
+	return;
+}
+
+
+bool DS18B20::Check_Response(void){
+	
+	bool Response = false;
+	
 	delay (80);    // delay according to datasheet
 
-	if (!(HAL_GPIO_ReadPin (DS18B20_PORT, DS18B20_PIN))) Response = 1;    // if the pin is low i.e the presence pulse is detected
-	else Response = -1;
+	if (!(HAL_GPIO_ReadPin (m_GPIO_PORT, m_GPIO_PIN))) Response = true;    // if the pin is low i.e the presence pulse is detected
 
 	delay (400); // 480 us delay totally.
 
-	return Response;
+	return Response ;
 }
 
-void DS18B20_Write (uint8_t data)
+
+
+void DS18B20::Write (uint8_t data)
 {
-	ISensor::Set_Pin_Output(DS18B20_PORT, DS18B20_PIN);  // set as output
+	Set_Pin_Output(m_GPIO_PORT, m_GPIO_PIN);  // set as output
 
 	for (int i=0; i<8; i++)
 	{
@@ -31,11 +45,11 @@ void DS18B20_Write (uint8_t data)
 		{
 			// write 1
 
-			ISensor::Set_Pin_Output(DS18B20_PORT, DS18B20_PIN);  // set as output
-			HAL_GPIO_WritePin (DS18B20_PORT, DS18B20_PIN, GPIO_PIN_RESET);  // pull the pin LOW
+			Set_Pin_Output(m_GPIO_PORT, m_GPIO_PIN);  // set as output
+			HAL_GPIO_WritePin (m_GPIO_PORT, m_GPIO_PIN, GPIO_PIN_RESET);  // pull the pin LOW
 			delay (1);  // wait for 1 us
 
-			ISensor::Set_Pin_Input(DS18B20_PORT, DS18B20_PIN);  // set as input
+			Set_Pin_Input(m_GPIO_PORT, m_GPIO_PIN);  // set as input
 			delay (50);  // wait for 60 us
 		}
 
@@ -43,30 +57,30 @@ void DS18B20_Write (uint8_t data)
 		{
 			// write 0
 
-			ISensor::Set_Pin_Output(DS18B20_PORT, DS18B20_PIN);
-			HAL_GPIO_WritePin (DS18B20_PORT, DS18B20_PIN, GPIO_PIN_RESET);  // pull the pin LOW
+			ISensor::Set_Pin_Output(m_GPIO_PORT, m_GPIO_PIN);
+			HAL_GPIO_WritePin (m_GPIO_PORT, m_GPIO_PIN, GPIO_PIN_RESET);  // pull the pin LOW
 			delay (50);  // wait for 60 us
 
-			ISensor::Set_Pin_Input(DS18B20_PORT, DS18B20_PIN);
+			ISensor::Set_Pin_Input(m_GPIO_PORT, m_GPIO_PIN);
 		}
 	}
 }
 
-uint8_t DS18B20_Read (void)
+uint8_t DS18B20::Read (void)
 {
 	uint8_t value=0;
 
-	ISensor::Set_Pin_Input(DS18B20_PORT, DS18B20_PIN);
+	ISensor::Set_Pin_Input(m_GPIO_PORT, m_GPIO_PIN);
 
 	for (int i=0;i<8;i++)
 	{
-		ISensor::Set_Pin_Output(DS18B20_PORT, DS18B20_PIN);   // set as output
+		ISensor::Set_Pin_Output(m_GPIO_PORT, m_GPIO_PIN);   // set as output
 
-		HAL_GPIO_WritePin (DS18B20_PORT, DS18B20_PIN, GPIO_PIN_RESET);  // pull the data pin LOW
+		HAL_GPIO_WritePin (m_GPIO_PORT, m_GPIO_PIN, GPIO_PIN_RESET);  // pull the data pin LOW
 		delay (1);  // wait for > 1us
 
-		ISensor::Set_Pin_Input(DS18B20_PORT, DS18B20_PIN);  // set as input
-		if (HAL_GPIO_ReadPin (DS18B20_PORT, DS18B20_PIN))  // if the pin is HIGH
+		ISensor::Set_Pin_Input(m_GPIO_PORT, m_GPIO_PIN);  // set as input
+		if (HAL_GPIO_ReadPin (m_GPIO_PORT, m_GPIO_PIN))  // if the pin is HIGH
 		{
 			value |= 1<<i;  // read = 1
 		}
@@ -78,34 +92,40 @@ uint8_t DS18B20_Read (void)
 
 
 
-uint8_t DS18B20_GetMeasurement(float& Temperature){
+bool DS18B20::GetMeasurement(DS18B20MeasureObject& measure_object){
 	
-	
-	
-	
+		
 uint8_t Temp_byte1, Temp_byte2;
-uint16_t SUM, TEMP;
+uint16_t SUM;
 
-uint8_t Presence = 0;
 	
-	 Presence = DS18B20_Start ();
+		Start ();
+		if(!Check_Response()){
+		 return false;
+		}
+	
 	  HAL_Delay (1);
-	  DS18B20_Write (0xCC);  // skip ROM
-	  DS18B20_Write (0x44);  // convert t
+	  Write (0xCC);  // skip ROM
+	  Write (0x44);  // convert t
 	  HAL_Delay (800);
 
-	  Presence = DS18B20_Start ();
-      HAL_Delay(1);
-      DS18B20_Write (0xCC);  // skip ROM
-      DS18B20_Write (0xBE);  // Read Scratch-pad
+		Start ();
+		if(!Check_Response()){
+		 return false;
+		}
 
-      Temp_byte1 = DS18B20_Read();
-	  Temp_byte2 = DS18B20_Read();
-	  TEMP = (Temp_byte2<<8)|Temp_byte1;
-	  Temperature = (float)TEMP/16;
+			HAL_Delay(1);
+      Write (0xCC);  // skip ROM
+      Write (0xBE);  // Read Scratch-pad
+
+      Temp_byte1 = Read();
+	  Temp_byte2 = Read();
+	  SUM = (Temp_byte2<<8)|Temp_byte1;
+		measure_object.tmp = (float)SUM/16;
+
 	
 	
-	
+		return true;
 	
 	
 }

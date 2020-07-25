@@ -29,8 +29,9 @@
 #include "FloatToString.h"
 #include "TIM_Delay.h"
 #include "I2c_lcd.h"
-#include "dht22.h"
 #include "Ds18b20.h"
+#include "ComponentsManager.h"
+
 
 /* USER CODE END Includes */
 
@@ -49,6 +50,9 @@
 /* USER CODE END PM */
 
 /* Private variables ---------------------------------------------------------*/
+
+ComponentsManager* l_manager;
+
 I2C_HandleTypeDef hi2c1;
 
 RTC_HandleTypeDef hrtc;
@@ -131,16 +135,16 @@ int main(void)
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
 
+		lcd_init();
+		lcd_clear();
 
-
-
-
-	lcd_init();
-	lcd_clear();
+l_manager = ComponentsManager::getInstance();
 
 
   while (1)
   {
+
+
 		
   
     /* USER CODE END WHILE */
@@ -295,6 +299,13 @@ static void MX_RTC_Init(void)
   }
   /** Enable the Alarm A 
   */
+	/*  
+	sAlarm.AlarmTime.Hours = 0x10;
+  sAlarm.AlarmTime.Minutes = 0x30;
+  sAlarm.AlarmTime.Seconds = 0x0;
+  sAlarm.AlarmTime.SubSeconds = 0x0;
+  sAlarm.AlarmMask = RTC_ALARMMASK_DATEWEEKDAY;
+	*/
   sAlarm.AlarmTime.Hours = 0x10;
   sAlarm.AlarmTime.Minutes = 0x10;
   sAlarm.AlarmTime.Seconds = 0x0;
@@ -302,6 +313,7 @@ static void MX_RTC_Init(void)
   sAlarm.AlarmTime.DayLightSaving = RTC_DAYLIGHTSAVING_ADD1H;
   sAlarm.AlarmTime.StoreOperation = RTC_STOREOPERATION_RESET;
   sAlarm.AlarmMask = RTC_ALARMMASK_DATEWEEKDAY|RTC_ALARMMASK_HOURS|RTC_ALARMMASK_MINUTES;
+	//sAlarm.AlarmMask = RTC_ALARMMASK_DATEWEEKDAY;
   sAlarm.AlarmSubSecondMask = RTC_ALARMSUBSECONDMASK_ALL;
   sAlarm.AlarmDateWeekDaySel = RTC_ALARMDATEWEEKDAYSEL_DATE;
   sAlarm.AlarmDateWeekDay = 1;
@@ -310,6 +322,23 @@ static void MX_RTC_Init(void)
   {
     Error_Handler();
   }
+	  /** Enable the Alarm B 
+  */
+	/*
+  sAlarm.AlarmTime.Hours = 0x20;
+  sAlarm.AlarmTime.Minutes = 0x30;
+  sAlarm.AlarmTime.Seconds = 0x0;
+  sAlarm.AlarmTime.SubSeconds = 0x0;
+  sAlarm.AlarmMask = RTC_ALARMMASK_DATEWEEKDAY;
+  sAlarm.AlarmDateWeekDay = 0x1;
+  sAlarm.Alarm = RTC_ALARM_B;
+  if (HAL_RTC_SetAlarm_IT(&hrtc, &sAlarm, RTC_FORMAT_BCD) != HAL_OK)
+  {
+    Error_Handler();
+  }
+	*/
+	
+	
   /* USER CODE BEGIN RTC_Init 2 */
 
   /* USER CODE END RTC_Init 2 */
@@ -448,12 +477,13 @@ static void MX_GPIO_Init(void)
 	//relay
 	
 	/*Configure GPIO pin : PC7 */
+	/*
 	GPIO_InitStruct.Pin = RELAY_PIN;
   GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
   GPIO_InitStruct.Pull = GPIO_NOPULL;
 	GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
   HAL_GPIO_Init(RELAY_PORT, &GPIO_InitStruct);
-	
+	*/
 
   /*Configure GPIO pin : USB_PowerSwitchOn_Pin */
   GPIO_InitStruct.Pin = USB_PowerSwitchOn_Pin;
@@ -475,29 +505,6 @@ static void MX_GPIO_Init(void)
 /* USER CODE BEGIN 4 */
 void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef* htim){
 	
-	float l_tmp;
-	GPIO_InitTypeDef GPIO_InitStruct = {0};
-
-	DS18B20_GetMeasurement(l_tmp);
-	
-	
-		if(l_tmp > MAXTEMP){
-			//turn on
-	GPIO_InitStruct.Pin = RELAY_PIN;
-  GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
-  GPIO_InitStruct.Pull = GPIO_NOPULL;
-	GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
-  HAL_GPIO_Init(RELAY_PORT, &GPIO_InitStruct);
-		}else{
-			//turn off
-	GPIO_InitStruct.Pin = RELAY_PIN;
-  GPIO_InitStruct.Mode = GPIO_MODE_INPUT;
-  GPIO_InitStruct.Pull = GPIO_NOPULL;
-	GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
-  HAL_GPIO_Init(RELAY_PORT, &GPIO_InitStruct);
-
-			
-		}
 	  
 		return;	
 }
@@ -510,37 +517,19 @@ void HAL_RTC_AlarmAEventCallback(RTC_HandleTypeDef *hrtc){
 	
 	dht22MeasureObject l_Measurement;
 	MeasureInformation l_MeasureObject;
-		
-	GetMeasurement(l_Measurement);
-	memcpy(&l_MeasureObject.temp_in_string[0],"Temp: ",6);
-	memcpy(&l_MeasureObject.rh_in_string[0],"RH: ",4);
+	
+	DS18B20MeasureObject measure_object;
+	
+	l_manager->GetDS18B20Measurement(measure_object);
 
-	FloatToString(&l_MeasureObject.temp_in_string[6],l_Measurement.tmp);
-	FloatToString(&l_MeasureObject.rh_in_string[4],l_Measurement.rh);
+
+	//l_manager->getDHT22Measure(l_Measurement);
 	
-	GetRTCDate(l_MeasureObject.date);
-	GetRTCTime(l_MeasureObject.time);
-	
-	
-	MX_USB_HOST_Process();
-	
-	// The usb will never be ready the first time. Repeat until we did write it to the usb stick
-	while(!save_to_usb(l_MeasureObject)){
-	MX_USB_HOST_Process();	
-	}
-		
-		lcd_clear();
-		lcd_send_cmd(0x80|0x80);
-		lcd_send_string(l_MeasureObject.temp_in_string);
-		lcd_send_cmd(0xc0|0xc0);
-		lcd_send_string(l_MeasureObject.rh_in_string);
+
 	
 	
 	
-	
-	
-	
-	
+
 	
 }
 

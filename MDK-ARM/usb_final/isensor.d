@@ -1,6 +1,7 @@
 usb_final\isensor.o: ..\Custom\ISensor.cpp
 usb_final\isensor.o: ..\Custom\ISensor.h
 usb_final\isensor.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
+usb_final\isensor.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdbool.h
 usb_final\isensor.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h
 usb_final\isensor.o: ../Inc/stm32f4xx_hal_conf.h
 usb_final\isensor.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_rcc.h
